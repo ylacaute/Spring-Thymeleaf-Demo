@@ -12,10 +12,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
 import org.yla.demo.thymeleaf.util.DateFormatter;
 import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 
@@ -23,10 +19,6 @@ import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
-	private static final String VIEWS = "/WEB-INF/views";
-	
-	@Value("${thymeleaf.template.cacheable}")
-	private boolean thymeleafTemplateCacheable;
 
 	@Value("${messages.cacheReloading}")
 	private int messagesCacheReloading;
@@ -56,32 +48,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 		messageSource.setDefaultEncoding("UTF-8");
 		messageSource.setCacheSeconds(messagesCacheReloading);
 		return messageSource;
-	}
-
-	@Bean
-	public TemplateResolver templateResolver() {
-		TemplateResolver templateResolver = new ServletContextTemplateResolver();
-		templateResolver.setPrefix(VIEWS);
-		templateResolver.setSuffix(".html");
-		templateResolver.setTemplateMode("HTML5");
-		templateResolver.setCacheable(thymeleafTemplateCacheable);
-		return templateResolver;
-	}
-
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		templateEngine.addDialect(new nz.net.ultraq.thymeleaf.LayoutDialect());
-		return templateEngine;
-	}
-
-	@Bean
-	public ThymeleafViewResolver viewResolver() {
-		ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
-		thymeleafViewResolver.setTemplateEngine(templateEngine());
-		thymeleafViewResolver.setCharacterEncoding("UTF-8");
-		return thymeleafViewResolver;
 	}
 
 	@Override
