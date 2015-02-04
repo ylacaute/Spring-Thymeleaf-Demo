@@ -1,4 +1,4 @@
-package org.yla.demo.thymeleaf.model;
+package org.yla.demo.thymeleaf.domain;
 
 import java.util.ArrayList;
 

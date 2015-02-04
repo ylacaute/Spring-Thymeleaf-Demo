@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.config.WebAppInitializer;
-import org.yla.demo.thymeleaf.model.Peripherique;
+import org.yla.demo.thymeleaf.domain.Peripherique;
 
 @Controller
 public class HomeController {
