@@ -8,7 +8,7 @@
 		Sample use case, from anywhere :
 	 
 		<div layout:include="/layouts/component/panel :: panel" th:with="panelTitle='Home Panel'" th:remove="tag">
-			<p layout:fragment="panelBody">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
+			<p layout:fragment="panel-body">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
 		</div>
 	 -->
 	<div layout:fragment="panel">
@@ -17,7 +17,7 @@
 	  			[PANEL HEADER]
 	  		</div>
 	  		<div class="panel-body">
-	  			<div layout:fragment="panelBody">
+	  			<div layout:fragment="panel-body">
 	    			[PANEL CONTENT]
 	    		</div>
 	  		</div>

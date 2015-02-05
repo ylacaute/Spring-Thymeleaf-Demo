@@ -5,8 +5,6 @@
 	layout:decorator="/layouts/page/page-a4"
 	th:with="pageTitle='Home Page'">
 <head>
-	<link rel="stylesheet" th:href="@{/wro/common.css}" />
-	<link rel="stylesheet" th:href="@{/wro/common.js}" />
 </head>
 <body>
 	<div layout:fragment="page-content" >
@@ -24,7 +22,7 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12" layout:include="/layouts/component/panel :: panel" th:with="panelTitle='Home Panel'">
-		   		<p layout:fragment="panelBody">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
+		   		<p layout:fragment="panel-body">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
 		  	</div>
 	  	</div>
 	</div>
