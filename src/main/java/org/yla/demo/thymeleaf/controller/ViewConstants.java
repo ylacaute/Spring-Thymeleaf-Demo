@@ -8,6 +8,6 @@ public class ViewConstants {
 	public static final String HOME_PAGE = "/pages/home/home";
 	
 	public static final String GET_ACCOUNT_PAGE = "/account";
-	public static final String ACCOUNT_PAGE = "/pages/account";
+	public static final String ACCOUNT_PAGE = "/pages/account/account";
 	
 }

@@ -1,4 +1,4 @@
-package org.yla.demo.thymeleaf.controller;
+package org.yla.demo.thymeleaf.controller.home;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.yla.demo.thymeleaf.controller.ViewConstants;
 import org.yla.demo.thymeleaf.domain.Peripherique;
 import org.yla.lib.skeleton.controller.BaseController;
 
