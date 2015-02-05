@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+	<!--
+		Sample use case, from anywhere :
+	 
+		<div layout:include="/layouts/component/widget :: panel" th:with="panelTitle='Home Panel'" th:remove="tag">
+			<p layout:fragment="widget-body">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
+		</div>
+	 -->
+
+	<div layout:fragment="widget">
+		<div class="panel panel-default">
+	  		<div class="panel-heading" th:text="${widgetTitle}">
+	  			[PANEL HEADER]
+	  		</div>
+	  		<div class="panel-body">
+	  			<div layout:fragment="widget-body">
+	    			[PANEL CONTENT]
+	    		</div>
+	  		</div>
+		</div>
+	</div>
+ </body>
+</html>

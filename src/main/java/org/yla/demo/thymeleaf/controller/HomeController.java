@@ -15,13 +15,20 @@ public class HomeController extends BaseController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
-	public String example1(Model model) {
-		Peripherique p = new Peripherique();
+	@RequestMapping(value = {"", "/", "index*"}, method = RequestMethod.GET)
+	public String getRootPage(Model model) {
+		return ViewConstants.REDIRECT + ViewConstants.GET_HOME_PAGE;
+	}
+	
+	@RequestMapping(value = ViewConstants.GET_HOME_PAGE, method = RequestMethod.GET)
+	public String getHomePage(Model model) {
+		/*Peripherique p = new Peripherique();
 		p.setNomModele("Samsung");
 		model.addAttribute("peripherique", p);
 		LOG.debug(">>>> Peripherique modele = " + p.getNomModele());
 		return "/pages/sample-form";
+		*/
+		return ViewConstants.HOME_PAGE;
 	}
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.POST)
