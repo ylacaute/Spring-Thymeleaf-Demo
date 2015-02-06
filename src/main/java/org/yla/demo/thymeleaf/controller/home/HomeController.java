@@ -7,7 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.yla.demo.thymeleaf.controller.ViewConstants;
+import org.yla.demo.thymeleaf.controller.PageModelConstants;
+import org.yla.demo.thymeleaf.controller.RequestMappingConstants;
 import org.yla.demo.thymeleaf.domain.Peripherique;
 import org.yla.lib.skeleton.controller.BaseController;
 
@@ -16,12 +17,16 @@ public class HomeController extends BaseController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = {"", "/", "index*"}, method = RequestMethod.GET)
-	public String getRootPage(Model model) {
-		return ViewConstants.REDIRECT + ViewConstants.GET_HOME_PAGE;
+	public HomeController() {
+		super(PageModelConstants.HOME);
 	}
 	
-	@RequestMapping(value = ViewConstants.GET_HOME_PAGE, method = RequestMethod.GET)
+	@RequestMapping(value = {"", "/", "index*"}, method = RequestMethod.GET)
+	public String getRootPage(Model model) {
+		return RequestMappingConstants.REDIRECT + RequestMappingConstants.GET_HOME_PAGE;
+	}
+	
+	@RequestMapping(value = RequestMappingConstants.GET_HOME_PAGE, method = RequestMethod.GET)
 	public String getHomePage(Model model) {
 		/*Peripherique p = new Peripherique();
 		p.setNomModele("Samsung");
@@ -29,7 +34,7 @@ public class HomeController extends BaseController {
 		LOG.debug(">>>> Peripherique modele = " + p.getNomModele());
 		return "/pages/sample-form";
 		*/
-		return ViewConstants.HOME_PAGE;
+		return RequestMappingConstants.HOME_PAGE;
 	}
 
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.POST)

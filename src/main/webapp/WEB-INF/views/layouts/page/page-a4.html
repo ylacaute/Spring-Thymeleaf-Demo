@@ -2,12 +2,9 @@
 <html 
 	xmlns="http://www.w3.org/1999/xhtml" 
 	xmlns:th="http://www.thymeleaf.org" 
-	xmlns:dt="http://github.com/dandelion/datatables"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	layout:decorator="/layouts/site/standard">
-<head>
-</head>
+	layout:decorator="/layouts/site/standard"
+	th:with="onLoad=${onLoad}, onReady=${onReady}">
 <body>
 	<div layout:fragment="main-content" class="container">
 		<h1 th:text="${pageTitle}">[PAGE TITLE]</h1>

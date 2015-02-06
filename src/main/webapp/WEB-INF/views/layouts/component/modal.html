@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<body layout:fragment="modal">
-	<!-- 
-		Sample use case :
-	
-		<div layout:include="/layouts/component/modal :: modal" th:with="modalId='message', modalHeader='Message'" th:remove="tag">
-	   		<p layout:fragment="modal-content"><p>SAMPLE CONTENT INCLUDED IN PANEL BODY</p></p>
-	  	</div>
-	 -->
-	<div th:id="${modalId} + '-container'" class="modal-container">
-		<section th:id="${modalId}" class="modal">
-			<header>
-				<h1 th:text="${modalHeader}">My Modal</h1>
-				<div th:id="'close-' + ${modalId}" class="modal-close">
-					<a href="#close">Close</a>
-				</div>
-			</header>
-			<div th:id="${modalId} + '-content'" class="modal-content">
-				<div layout:fragment="modal-content">
-					<p>My modal content</p>
-				</div>
-			</div>
-		</section>
-	</div>
+<html 
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+</head>
+<body>
+
+  <div layout:fragment="modal">
+    <div class="modal fade" th:id="${modalId}" tabindex="-1" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+      <form class="form-horizontal" th:action="@{/index}" th:object="${formObject}" method="post">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="modal-title" th:text="${modalTitle}">[MODAL TITLE]</h4>
+            </div>
+            <div class="modal-body">
+              <div layout:fragment="modal-body">
+                [MODAL CONTENT]
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div layout:fragment="modal-footer">
+                [MODAL FOOTER]
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </body>
 </html>

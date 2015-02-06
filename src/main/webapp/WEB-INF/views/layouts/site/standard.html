@@ -10,9 +10,8 @@
 	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
 	<link rel="stylesheet" th:href="@{/wro/common.css}" />
-	<link rel="stylesheet" th:href="@{/wro/common.js}" />
+	<script type="text/javascript" th:src="@{/wro/common.js}"></script>
  	<!-- 
    	<script th:replace="config/app :: content"></script>
 	<script th:replace="config/ajax :: content"></script>
@@ -22,7 +21,15 @@
   		<script type="text/javascript" th:src="@{/wro/common-ie.js}"></script>
    	<![endif]-->
 </head>
-<body>
+<body th:onLoad="${onLoad}">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+	 		$(document).ready(function() {
+	 			var userCallback = /*[[${onReady}]]*/;
+				FunctionUtils.callFromString(userCallback);
+			});
+		/*]]>*/ 
+	</script>
 	<div th:replace="/fragments/header :: header">[HEADER]</div>
 	<section layout:fragment="main-content">
 		[CONTENT]

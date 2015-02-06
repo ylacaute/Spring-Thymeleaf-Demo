@@ -1,6 +1,6 @@
 package org.yla.demo.thymeleaf.controller;
 
-public class ViewConstants {
+public class RequestMappingConstants {
 
 	public static final String REDIRECT = "redirect:";
 	

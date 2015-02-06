@@ -2,15 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorator="layouts/page/standard"
-	th:with="pageTitle='Account Page'">
-<head>
-	<link rel="stylesheet" th:href="@{/wro/common.css}" />
-	<link rel="stylesheet" th:href="@{/wro/common.js}" />
-</head>
+	layout:decorator="/layouts/page/page-a4"
+	th:with="pageTitle='Account Page', onLoad='AccountController.onLoad();'">
 <body>
 	<div layout:fragment="page-content">
-		<p>Hello</p>
+		<p>Hello, this is the account page content !</p>
 	</div>
 </body>
 </html>

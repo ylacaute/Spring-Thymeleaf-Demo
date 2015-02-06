@@ -3,26 +3,43 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/layouts/page/page-a4"
-	th:with="pageTitle='Home Page'">
-<head>
-</head>
+	th:with="pageTitle='Home Page', onLoad='HomeController.onLoad();', onReady='HomeController.onReady();'">
 <body>
-	<div layout:fragment="page-content" >
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>This page use the 'page-a4' page layout which is included in 'standard' site layout.</p>
+				<p>${page} : '<span th:text="${page}" />'</p>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-sm-6">
 				<div layout:include="/layouts/component/widget :: widget" th:with="widgetTitle='Widget 1'" th:remove="tag">
-					<p layout:fragment="widget-body">WIDGET 1 CONTENT</p>
+					<div layout:fragment="widget-body">
+						<p>WIDGET 1 CONTENT (use widget layout)</p>
+						<button id="showModalBtn" type="button" class="btn btn-default">Show modal</button>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div layout:include="/layouts/component/widget :: widget" th:with="widgetTitle='Widget 2'" th:remove="tag">
-					<p layout:fragment="widget-body">WIDGET 2 CONTENT</p>
+					<p layout:fragment="widget-body">WIDGET 2 CONTENT (use widget layout)</p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-12" layout:include="/layouts/component/panel :: panel" th:with="panelTitle='Home Panel'">
-		   		<p layout:fragment="panel-body">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
+		   		<p layout:fragment="panel-body">SAMPLE CONTENT INCLUDED IN PANEL BODY (use panel layout)</p>
+		  	</div>
+	  	</div>
+	  	<div class="row">
+	  		<div class="col-sm-12" layout:include="/layouts/component/modal :: modal" th:with="modalId='sampleModal', modalTitle='Home Modal'">
+		   		<div layout:fragment="modal-body">
+		   			<p>SAMPLE CONTENT INCLUDED IN WINDOW MODAL BODY (use modal layout)</p>
+		   		</div>
+		   		<div layout:fragment="modal-footer">
+		   			<p>SPECIFIC MODAL FOOTER</p>
+		   		</div> 
 		  	</div>
 	  	</div>
 	</div>

@@ -7,7 +7,9 @@ Key words :
 - Full annotation
 - Bootstrap (webjar)
 - JQuery (webjar)
-- Thymeleaf intégration
+- Web Resource Optimization (WRO4J)
+- Module JS
+- Thymeleaf integration
   - site layout, page layout, component layout
   - HTML5 form validation
   - Spring Security Integration
