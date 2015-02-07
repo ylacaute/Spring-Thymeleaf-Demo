@@ -1,5 +1,7 @@
 package org.yla.demo.thymeleaf.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -18,11 +20,18 @@ import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
+	private static final Logger LOG = LoggerFactory.getLogger(WebMvcConfig.class);
+	
 	private static final String MESSAGE_SOURCE = "/WEB-INF/i18n/messages";
 
 	@Value("${messages.cacheReloading}")
 	private int messagesCacheReloading;
 
+	
+	public WebMvcConfig() {
+		LOG.info("Constructing WebMvcConfig bean...");
+	}
+	
 	@Override
 	public RequestMappingHandlerMapping requestMappingHandlerMapping() {
 		RequestMappingHandlerMapping requestMappingHandlerMapping = super.requestMappingHandlerMapping();

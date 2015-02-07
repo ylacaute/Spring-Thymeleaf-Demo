@@ -1,5 +1,7 @@
 package org.yla.demo.thymeleaf.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,10 +13,17 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 @Configuration
 public class ThymeleafConfig {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ThymeleafConfig.class);
+	
 	private static final String VIEWS = "/WEB-INF/views";
 	
 	@Value("${thymeleaf.template.cacheable}")
 	private boolean thymeleafTemplateCacheable;
+	
+	
+	public ThymeleafConfig() {
+		LOG.info("Constructing ThymeleafConfig bean...");
+	}
 	
 	@Bean
 	public TemplateResolver templateResolver() {

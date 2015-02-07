@@ -12,11 +12,6 @@ public class WebAppListener implements ApplicationListener<ApplicationEvent> {
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
     	LOG.debug("Event : {}", event);
-    	/*
-        if (event instanceof ContextRefreshedEvent) {
-            ApplicationContext applicationContext = ((ContextRefreshedEvent) event).getApplicationContext();
-        }
-        */
     }
     
 }
