@@ -13,7 +13,9 @@
 	<div layout:fragment="custom-page">
 		<div layout:include="/layouts/page/custom :: custom-page" th:with="pageTitle='Custom Layout Sample'" th:remove="tag">
 			<div layout:fragment="page-header">
-				<div th:replace="/fragments/header/header :: header">[HEADER]</div>
+				<div class="container">
+					<div th:replace="/fragments/header/header :: header">[HEADER]</div>
+				</div>
 			</div>
 			<div layout:fragment="page-content">
 				<section class="container" id="tutu">
