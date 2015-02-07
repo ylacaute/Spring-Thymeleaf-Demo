@@ -19,9 +19,17 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.yla.demo.thymeleaf.util.DateFormatter;
 import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 
+/**
+ * All servlet context beans are define here.
+ * 
+ * @author Yannick Lacaute
+ *
+ */
 @Order(2)
 @Configuration
-@ComponentScan(basePackages = "org.yla.demo.thymeleaf.controller")
+@ComponentScan(basePackages = {
+		"org.yla.demo.thymeleaf.controller", 
+		"org.yla.demo.thymeleaf.config.web" })
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WebMvcConfig.class);

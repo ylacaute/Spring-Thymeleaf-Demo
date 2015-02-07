@@ -29,7 +29,6 @@ public class WidgetController extends BaseController {
 		this.widgetService = widgetService;		
 	}
 	
-	
 	@ModelAttribute("allWidgetTypes")
     public List<WidgetType> getAllWidgetTypes() {
         return widgetService.getAllWidgetTypes();
