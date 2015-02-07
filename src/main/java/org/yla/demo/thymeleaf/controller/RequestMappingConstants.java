@@ -14,6 +14,9 @@ public class RequestMappingConstants {
 	public static final String GET_LARGE_LAYOUT_PAGE = "/demos/layout-large";
 	public static final String LARGE_LAYOUT_PAGE = "/pages/demos/layout-large";
 	
+	public static final String GET_CUSTOM_LAYOUT_PAGE = "/demos/layout-custom";
+	public static final String CUSTOM_LAYOUT_PAGE = "/pages/demos/layout-custom";
+	
 	public static final String GET_ACCOUNT_PAGE = "/account";
 	public static final String ACCOUNT_PAGE = "/pages/account/account";
 	

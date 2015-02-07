@@ -7,12 +7,14 @@
 var HomeController = (function () {
 	"use strict";
 
+	// PRIVATE
+	
 	var URL = {
 	};
 
 	var modalReceiverId = "modalReceiver";
 	
-	// PRIVATE
+	
 	
 	
 	

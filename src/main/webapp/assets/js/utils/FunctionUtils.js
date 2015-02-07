@@ -6,13 +6,14 @@
 // ------------------------------------------------------------------------------------------------
 var FunctionUtils = (function () {
 	"use strict";
-
 	
 	// PRIVATE
 	
 	
 	return {
 
+		// PUBLIC
+		
 		// Get function from string, with or without scopes
 		getFromString : function(functionName) {
 			if (functionName == null) return null;

@@ -35,4 +35,11 @@ public class LayoutController extends PageController {
 		LOG.info("Display the demos large layout page");
 		return RequestMappingConstants.LARGE_LAYOUT_PAGE;
 	}
+	
+	@RequestMapping(value = RequestMappingConstants.GET_CUSTOM_LAYOUT_PAGE, method = RequestMethod.GET)
+	public String getCustomLayoutPage(Model model) {
+		LOG.info("Display the demos custom layout page");
+		return RequestMappingConstants.CUSTOM_LAYOUT_PAGE;
+	}
+	
 }

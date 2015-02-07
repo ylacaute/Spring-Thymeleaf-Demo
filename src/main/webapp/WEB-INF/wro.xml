@@ -15,7 +15,7 @@
 		<js>/assets/js/pages/AccountController.js</js>
 		<js>/assets/js/pages/demos/LayoutController.js</js>
 		
-		<css>/assets/css/layouts/site/standard.css</css>
+		<css>/assets/css/layouts/site/default.css</css>
 		<css>/assets/css/theme/default.css</css>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap.min.css</css>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap-theme.css</css>

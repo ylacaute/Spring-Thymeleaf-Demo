@@ -25,10 +25,8 @@
 			});
 		/*]]>*/ 
 	</script>
-	<div th:replace="/fragments/header/header :: header">[HEADER]</div>
-	<section layout:fragment="main-content">
-		[CONTENT]
-   	</section>
-	<div th:replace="/fragments/footer/footer :: footer">[FOOTER]</div>
+	<div layout:fragment="custom-page" th:remove="tag">
+		[CUSTOM PAGE]
+   	</div>
   </body>
 </html>
