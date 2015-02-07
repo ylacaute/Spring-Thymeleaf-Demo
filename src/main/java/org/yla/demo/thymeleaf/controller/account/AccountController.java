@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.controller.PageModelConstants;
 import org.yla.demo.thymeleaf.controller.RequestMappingConstants;
-import org.yla.lib.skeleton.controller.BaseController;
+import org.yla.lib.skeleton.controller.PageController;
 
 @Controller
-public class AccountController extends BaseController {
+public class AccountController extends PageController {
 
 	public AccountController() {
 		super(PageModelConstants.ACCOUNT);

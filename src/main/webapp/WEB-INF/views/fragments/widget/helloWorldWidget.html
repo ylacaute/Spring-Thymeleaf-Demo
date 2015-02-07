@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+	
+	<div layout:fragment="widget">
+		<div layout:include="/layouts/component/widget :: widget" th:with="widgetTitle='Widget Hello World'" th:remove="tag">
+			<div layout:fragment="widget-body">
+				<p>Widget Hello World content</p>
+				<p>Widget id : <span th:text="${widget.id}"></span></p>
+				<p>This widget is loaded in ajax with a thymeleaf fragment.</p>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

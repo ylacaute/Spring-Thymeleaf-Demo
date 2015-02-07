@@ -10,4 +10,7 @@ public class RequestMappingConstants {
 	public static final String GET_ACCOUNT_PAGE = "/account";
 	public static final String ACCOUNT_PAGE = "/pages/account/account";
 	
+	public static final String GET_WIDGET_FRAG = "/widget/{widgetId}";
+	public static final String WIDGET_FRAG_DIR = "/fragments/widget/";
+	
 }

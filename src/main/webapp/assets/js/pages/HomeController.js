@@ -7,8 +7,12 @@
 var HomeController = (function () {
 	"use strict";
 
+	var URL = {
+		widget : "/widget/"
+		
+	};
+
 	// PRIVATE
-	
 	
 	
 	
@@ -27,7 +31,16 @@ var HomeController = (function () {
 			$('#showModalBtn').click(function() {
  				$('#sampleModal').modal();
  			});
+		},
+		
+		loadWidget : function(domReceiverId, widgetId) {
+			var url = Constants.CONTEXT_PATH + URL.widget + widgetId;
+			console.log("Url : " + url);
+			$("#" + domReceiverId).load(url);
+			
 		}
+		
+		
 		
 	}
 	

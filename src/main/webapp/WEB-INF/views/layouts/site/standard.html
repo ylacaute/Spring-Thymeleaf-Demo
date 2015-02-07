@@ -12,6 +12,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" th:href="@{/wro/common.css}" />
 	<script type="text/javascript" th:src="@{/wro/common.js}"></script>
+	
+	<script>var ctx = "${pageContext.request.contextPath}"</script>
+	
  	<!-- 
    	<script th:replace="config/app :: content"></script>
 	<script th:replace="config/ajax :: content"></script>
@@ -25,8 +28,10 @@
 	<script th:inline="javascript">
 		/*<![CDATA[*/
 	 		$(document).ready(function() {
-	 			var userCallback = /*[[${onReady}]]*/;
-				FunctionUtils.callFromString(userCallback);
+	 			Constants.CONTEXT_PATH = /*[[${#ctx.httpServletRequest.contextPath}]]*/;
+	 			var pageReadyCallback = /*[[${onReady}]]*/;
+	 			console.log("contextPath set to " + Constants.CONTEXT_PATH);
+	 			FunctionUtils.callFromString(pageReadyCallback);
 			});
 		/*]]>*/ 
 	</script>

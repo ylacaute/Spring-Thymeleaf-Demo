@@ -1,5 +1,13 @@
 
 
+
+/* NO OUTLINE */
+.btn, .btn:focus, .btn:active, a, a:active, .nav-tabs a, .panel-title > a {
+	outline: none !important;
+	text-decoration: none;
+}
+
+
 header {
 }
 

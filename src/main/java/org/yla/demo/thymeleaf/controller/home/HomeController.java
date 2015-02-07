@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.controller.PageModelConstants;
 import org.yla.demo.thymeleaf.controller.RequestMappingConstants;
 import org.yla.demo.thymeleaf.domain.Peripherique;
-import org.yla.lib.skeleton.controller.BaseController;
+import org.yla.lib.skeleton.controller.PageController;
 
 @Controller
-public class HomeController extends BaseController {
+public class HomeController extends PageController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 	
