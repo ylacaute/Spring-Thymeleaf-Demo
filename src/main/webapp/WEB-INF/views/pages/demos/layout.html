@@ -3,11 +3,14 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/layouts/page/page-a4"
-	th:with="pageTitle='Account Page', onLoad='AccountController.onLoad();'">
+	th:with="pageTitle='Layout Page', 
+	onLoad='LayoutController.onLoad();', 
+	onReady='LayoutController.onReady();'">
 <body>
 
 	<div layout:fragment="page-content">
-		<p>Hello, this is the account page content !</p>
+		<div th:replace="/pages/demos/layout-content :: content">
+		</div>
 	</div>
 
 </body>

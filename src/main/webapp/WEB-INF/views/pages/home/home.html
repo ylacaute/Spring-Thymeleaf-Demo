@@ -3,57 +3,24 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/layouts/page/page-a4"
-	th:with="pageTitle='Home Page', onLoad='HomeController.onLoad();', onReady='HomeController.onReady();'">
+	th:with="pageTitle='Home Page', 
+	onLoad='HomeController.onLoad();', 
+	onReady='HomeController.onReady();'">
 <body>
+
 	<div layout:fragment="page-content">
-		<div class="row">
-			<div class="col-sm-12">
-				<p>This page use the 'page-a4' page layout which is included in 'standard' site layout.</p>
-				<p>${page} : <span th:text="${page}"></span></p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-6">
-				<div layout:include="/layouts/component/widget :: widget" th:with="widgetTitle='Widget 1'" th:remove="tag">
-					<div layout:fragment="widget-body">
-						<p>WIDGET 1 CONTENT (use widget layout)</p>
-						<p>This widget is directly loaded from this page</p>
-						<button id="showModalBtn" type="button" class="btn btn-default"
-							onClick="HomeController.showModal('staticModal');">Show static modal</button>
-						<br />
-						<button id="showAjaxModalBtn" type="button" class="btn btn-default"
-							onClick="HomeController.loadModal('helloWorldModal');">Show dynamic modal (ajax)</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6" id="widgetReceiver1">
-				<button id="loadWidgetBtn" type="button" class="btn btn-default"
-					onClick="HomeController.loadWidget('widgetReceiver1', '1');">Load Hello World Widget (ajax)</button>
-			</div>
-			<div class="col-sm-6 .col-sm-offset-6" id="widgetReceiver2">
-				<button id="loadWidgetBtn" type="button" class="btn btn-default"
-					onClick="HomeController.loadWidget('widgetReceiver2', '2');">Load Text Widget (ajax)</button>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12" layout:include="/layouts/component/panel :: panel" th:with="panelTitle='Home Panel'">
-		   		<p layout:fragment="panel-body">SAMPLE CONTENT INCLUDED IN PANEL BODY (use panel layout)</p>
-		  	</div>
-	  	</div>
 	  	<div class="row">
-	  		<div class="col-sm-12" layout:include="/layouts/component/modal :: modal" th:with="modalId='staticModal', modalTitle='Home Modal'">
-		   		<div layout:fragment="modal-body">
-		   			<p>Simple content modal (use modal layout)</p>
-		   			<p>This window modal is directly included in the home page.</p>
-		   		</div>
-		   		<div layout:fragment="modal-footer">
-		   			<p>Simple footer modal</p>
+			<div class="col-sm-12" layout:include="/layouts/component/panel :: panel" th:with="panelTitle='Form Panel'">
+		   		<div layout:fragment="panel-body">
+		   			<p>Simple form HTML5 Validation</p>
+		   			<form id="form" class="form-horizontal" th:action="@{/home}" th:object="${widget}" method="post">
+						<fieldset>
+						</fieldset>
+					</form>	
 		   		</div>
 		  	</div>
 	  	</div>
-	  	
-	  	<div id="modalReceiver"></div>
-	  	
 	</div>
+	
 </body>
 </html>

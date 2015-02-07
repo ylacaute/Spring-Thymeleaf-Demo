@@ -12,6 +12,14 @@ import org.yla.demo.thymeleaf.controller.RequestMappingConstants;
 import org.yla.demo.thymeleaf.domain.Peripherique;
 import org.yla.lib.skeleton.controller.PageController;
 
+/**
+ * The HomeController handle main requests to display the home page.
+ * Note that maybe the home page could be displayed with fragment managed
+ * by other controllers.
+ * 
+ * @author Yannick Lacaute
+ *
+ */
 @Controller
 public class HomeController extends PageController {
 
@@ -21,26 +29,37 @@ public class HomeController extends PageController {
 		super(PageModelConstants.HOME);
 	}
 	
+	/**
+	 * Routing all classic base requests to the home page. We use
+	 * forward here because we don't care about the URL inside the browser.
+	 * So a forward is lighter than a redirect.
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = {"", "/", "index*"}, method = RequestMethod.GET)
 	public String getRootPage(Model model) {
-		return RequestMappingConstants.REDIRECT + RequestMappingConstants.GET_HOME_PAGE;
+		return RequestMappingConstants.FORWARD + RequestMappingConstants.GET_HOME_PAGE;
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.GET_HOME_PAGE, method = RequestMethod.GET)
 	public String getHomePage(Model model) {
-		/*Peripherique p = new Peripherique();
-		p.setNomModele("Samsung");
-		model.addAttribute("peripherique", p);
-		LOG.debug(">>>> Peripherique modele = " + p.getNomModele());
-		return "/pages/sample-form";
-		*/
+		LOG.info("Display the home page");
 		return RequestMappingConstants.HOME_PAGE;
 	}
 
+	@RequestMapping(value = "/pages/blank", method = RequestMethod.GET)
+	public String getBlankPage(Model model) {
+		LOG.info("Display the blank page");
+		return "/pages/blank";
+	}
+	
+	/*
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.POST)
 	public String example1(Model model, @ModelAttribute Peripherique p) {
 		LOG.debug("<<<< Peripherique modele = " + p.getNomModele());
 		return "/pages/sample-form";
 	}
+	*/
 	
 }

@@ -12,17 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" th:href="@{/wro/common.css}" />
 	<script type="text/javascript" th:src="@{/wro/common.js}"></script>
-	
-	<script>var ctx = "${pageContext.request.contextPath}"</script>
-	
- 	<!-- 
-   	<script th:replace="config/app :: content"></script>
-	<script th:replace="config/ajax :: content"></script>
-	<script th:replace="config/i18n :: content"></script>
-	 -->
-   	<!--[if lt IE 9]>
-  		<script type="text/javascript" th:src="@{/wro/common-ie.js}"></script>
-   	<![endif]-->
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Thymeleaf</title>
 </head>
 <body th:onLoad="${onLoad}">
 	<script th:inline="javascript">

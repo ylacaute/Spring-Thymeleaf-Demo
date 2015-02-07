@@ -19,10 +19,9 @@
 		
 		<!-- CORE -->
 		<spring.core-version>4.0.2.RELEASE</spring.core-version>
-		<thymeleaf.core-version>2.1.2.RELEASE</thymeleaf.core-version>
-		<thymeleaf.dialect.spring-security-version>2.1.1.RELEASE</thymeleaf.dialect.spring-security-version>
-		<thymeleaf.dialect.layout-version>1.2.1</thymeleaf.dialect.layout-version>
-		<thymeleaf.dialect.datatables-version>0.9.3</thymeleaf.dialect.datatables-version>
+		<thymeleaf.core-version>2.1.4.RELEASE</thymeleaf.core-version>
+<!-- 		<thymeleaf.dialect.spring-security-version>2.1.1.RELEASE</thymeleaf.dialect.spring-security-version> -->
+		<thymeleaf.dialect.layout-version>1.2.7</thymeleaf.dialect.layout-version>
 		<json.jackson-version>2.3.1</json.jackson-version>
 		<validation.api-version>1.0.0.GA</validation.api-version>
 		<validation.hibernate-version>4.3.0.Final</validation.hibernate-version>
