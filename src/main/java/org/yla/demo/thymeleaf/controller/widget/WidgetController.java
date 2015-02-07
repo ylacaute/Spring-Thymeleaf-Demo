@@ -2,6 +2,8 @@ package org.yla.demo.thymeleaf.controller.widget;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ import org.yla.lib.skeleton.controller.BaseController;
 @Controller
 public class WidgetController extends BaseController {
 
+	private static final Logger LOG = LoggerFactory.getLogger(WidgetController.class);
+	
 	private WidgetService widgetService;
 	
 	@Autowired
@@ -38,8 +42,8 @@ public class WidgetController extends BaseController {
 	
 	
 	@RequestMapping(value = RequestMappingConstants.GET_WIDGET_FRAG, method = RequestMethod.GET)
-	public String getHomePage(Model model, @PathVariable String widgetId) throws Exception {
-		
+	public String loadWidget(Model model, @PathVariable String widgetId) throws Exception {
+		LOG.info("[AJAX] Loading widget id={}", widgetId);
 		Widget widget = widgetService.getWidget(widgetId);
 		model.addAttribute("widget", widget);
 		

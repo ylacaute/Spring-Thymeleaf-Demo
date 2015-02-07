@@ -8,10 +8,12 @@ var HomeController = (function () {
 	"use strict";
 
 	var URL = {
+		modal : "/modal/",
 		widget : "/widget/"
-		
 	};
 
+	var modalReceiverId = "modalReceiver";
+	
 	// PRIVATE
 	
 	
@@ -28,19 +30,24 @@ var HomeController = (function () {
 		onReady : function() {
 	    	// Do load stuff here (page not fully loaded)
 	    	console.log("Home page ready.");
-			$('#showModalBtn').click(function() {
- 				$('#sampleModal').modal();
- 			});
 		},
 		
 		loadWidget : function(domReceiverId, widgetId) {
 			var url = Constants.CONTEXT_PATH + URL.widget + widgetId;
 			console.log("Url : " + url);
 			$("#" + domReceiverId).load(url);
-			
+		},
+		
+		loadModal : function(modalFragmentName) {
+			var url = Constants.CONTEXT_PATH + URL.modal + modalFragmentName;
+			$("#" + modalReceiverId).load(url, function() {
+				HomeController.showModal(modalFragmentName);
+			});
+		},
+		
+		showModal : function(modalId) {
+			$("#" + modalId).modal();
 		}
-		
-		
 		
 	}
 	

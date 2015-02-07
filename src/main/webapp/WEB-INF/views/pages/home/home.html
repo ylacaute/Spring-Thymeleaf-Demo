@@ -18,17 +18,21 @@
 					<div layout:fragment="widget-body">
 						<p>WIDGET 1 CONTENT (use widget layout)</p>
 						<p>This widget is directly loaded from this page</p>
-						<button id="showModalBtn" type="button" class="btn btn-default">Show modal</button>
+						<button id="showModalBtn" type="button" class="btn btn-default"
+							onClick="HomeController.showModal('staticModal');">Show static modal</button>
+						<br />
+						<button id="showAjaxModalBtn" type="button" class="btn btn-default"
+							onClick="HomeController.loadModal('helloWorldModal');">Show dynamic modal (ajax)</button>
 					</div>
 				</div>
 			</div>
 			<div class="col-sm-6" id="widgetReceiver1">
 				<button id="loadWidgetBtn" type="button" class="btn btn-default"
-					onClick="HomeController.loadWidget('widgetReceiver1', '1');">Load Hello World Widget</button>
+					onClick="HomeController.loadWidget('widgetReceiver1', '1');">Load Hello World Widget (ajax)</button>
 			</div>
 			<div class="col-sm-6 .col-sm-offset-6" id="widgetReceiver2">
 				<button id="loadWidgetBtn" type="button" class="btn btn-default"
-					onClick="HomeController.loadWidget('widgetReceiver2', '2');">Load Text Widget</button>
+					onClick="HomeController.loadWidget('widgetReceiver2', '2');">Load Text Widget (ajax)</button>
 			</div>
 		</div>
 		<div class="row">
@@ -37,15 +41,19 @@
 		  	</div>
 	  	</div>
 	  	<div class="row">
-	  		<div class="col-sm-12" layout:include="/layouts/component/modal :: modal" th:with="modalId='sampleModal', modalTitle='Home Modal'">
+	  		<div class="col-sm-12" layout:include="/layouts/component/modal :: modal" th:with="modalId='staticModal', modalTitle='Home Modal'">
 		   		<div layout:fragment="modal-body">
-		   			<p>SAMPLE CONTENT INCLUDED IN WINDOW MODAL BODY (use modal layout)</p>
+		   			<p>Simple content modal (use modal layout)</p>
+		   			<p>This window modal is directly included in the home page.</p>
 		   		</div>
 		   		<div layout:fragment="modal-footer">
-		   			<p>SPECIFIC MODAL FOOTER</p>
+		   			<p>Simple footer modal</p>
 		   		</div>
 		  	</div>
 	  	</div>
+	  	
+	  	<div id="modalReceiver"></div>
+	  	
 	</div>
 </body>
 </html>

@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yla.lib.skeleton.config.BaseWebAppInitializer;
 
-
 public class WebAppInitializer extends BaseWebAppInitializer {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WebAppInitializer.class);
@@ -15,13 +14,12 @@ public class WebAppInitializer extends BaseWebAppInitializer {
 	
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {RootConfig.class};
+        return new Class<?>[] { RootConfig.class }; /*, PropertiesConfig.class, ThymeleafConfig.class*/
     }
-    
     
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[0];
+        return new Class<?>[] { PropertiesConfig.class, WebMvcConfig.class };
     }
     
 }

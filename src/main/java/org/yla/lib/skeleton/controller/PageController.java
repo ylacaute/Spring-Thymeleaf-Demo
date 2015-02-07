@@ -11,7 +11,6 @@ public abstract class PageController extends BaseController {
 	private String pageName;
 	
 	public PageController(String pageName) {
-		LOG.info("Construct {} bean...", getClass().getSimpleName());
 		this.pageName = pageName;
 	}
 	

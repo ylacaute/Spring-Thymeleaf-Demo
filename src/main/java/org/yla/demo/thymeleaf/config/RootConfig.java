@@ -2,14 +2,23 @@ package org.yla.demo.thymeleaf.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.stereotype.Controller;
 
+/**
+ * All beans are constructed under the root application context, excepting
+ * the WebMvcConfig and all controllers which belong to the servlet context
+ * and define in WebMvcConfig class.
+ * 
+ * @author Yannick Lacaute
+ *
+ */
 @Configuration
-@ComponentScan("org.yla.demo.thymeleaf")
+@ComponentScan(basePackages = "org.yla.demo.thymeleaf", excludeFilters = { 
+	@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = WebMvcConfig.class),
+	@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class)})
 public class RootConfig {
 
 	private static final Logger LOG = LoggerFactory.getLogger(RootConfig.class);
@@ -17,12 +26,5 @@ public class RootConfig {
 	public RootConfig() {
 		LOG.info("Constructing RootConfig bean...");
 	}
-	
-	@Bean
-	public static PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
-		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-		ppc.setLocation(new ClassPathResource("/app.properties"));
-		return ppc;
-	}
-	
+
 }

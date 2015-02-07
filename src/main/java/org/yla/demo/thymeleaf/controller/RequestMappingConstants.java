@@ -13,4 +13,7 @@ public class RequestMappingConstants {
 	public static final String GET_WIDGET_FRAG = "/widget/{widgetId}";
 	public static final String WIDGET_FRAG_DIR = "/fragments/widget/";
 	
+	public static final String GET_MODAL_FRAG = "/modal/{modalFramentName}";
+	public static final String MODAL_FRAG_DIR = "/fragments/modal/";
+
 }

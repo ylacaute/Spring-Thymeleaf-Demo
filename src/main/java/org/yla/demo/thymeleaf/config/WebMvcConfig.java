@@ -5,21 +5,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.annotation.Order;
 import org.springframework.format.support.FormattingConversionService;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-import org.yla.demo.thymeleaf.controller.RequestMappingConstants;
 import org.yla.demo.thymeleaf.util.DateFormatter;
 import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 
+@Order(2)
 @Configuration
+@ComponentScan(basePackages = "org.yla.demo.thymeleaf.controller")
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WebMvcConfig.class);
@@ -28,7 +30,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	@Value("${messages.cacheReloading}")
 	private int messagesCacheReloading;
-
+	
 	
 	public WebMvcConfig() {
 		LOG.info("Constructing WebMvcConfig bean...");
