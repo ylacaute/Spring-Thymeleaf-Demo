@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.PageModelConstants;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
 import org.yla.demo.thymeleaf.mvc.form.ContactUsModel;
+import org.yla.demo.thymeleaf.mvc.form.LoginModel;
 import org.yla.lib.skeleton.controller.PageController;
 
 /**
@@ -41,10 +42,17 @@ public class HomeController extends PageController {
 		return RequestMappingConstants.FORWARD + RequestMappingConstants.GET_HOME_PAGE;
 	}
 	
-	@RequestMapping(value = RequestMappingConstants.GET_HOME_PAGE, method = RequestMethod.GET)
+	/**
+	 * This method can be called as GET or POST if we come from a forwarded form submit.
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = RequestMappingConstants.GET_HOME_PAGE)
 	public String getHomePage(Model model) {
 		LOG.info("Display the home page");
 		model.addAttribute("contactUsModel", new ContactUsModel());
+		model.addAttribute("loginModel", new LoginModel());
 		return RequestMappingConstants.HOME_PAGE;
 	}
 

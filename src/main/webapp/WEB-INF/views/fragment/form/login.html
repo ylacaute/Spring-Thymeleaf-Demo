@@ -3,7 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org">
 <body>
 	<section th:fragment="login">
-		<form th:fragment="login" id="login-form" class="form-horizontal" method="post" th:action="${action}">
+		<form th:fragment="login" id="login-form" class="form-horizontal" method="post" th:action="${action}" th:object="${loginModel}">
+			<input type="hidden" name="forward" th:value="${forward}"></input>
 			<fieldset>
 				<legend>Login Form</legend>
 				<div class="form-group">
@@ -12,6 +13,7 @@
 						<input class="form-control input-xxlarge" id="login" placeholder="Login"
 							required="required" pattern="[a-zA-Z]+"
 							onChange="FormValidator.resetValidation(this)"
+							th:field="${loginModel.login}"
 							th:onInvalid="'FormValidator.validate(this, \'' +  
 								#{contact-us-form.name.empty} + '\',\'' + 
 								#{contact-us-form.name.invalid} + '\');'"></input>
@@ -23,6 +25,7 @@
 						<input class="form-control input-xxlarge" type="password" id="password" placeholder="Password"
 							required="required"
 							onChange="FormValidator.resetValidation(this)"
+							th:field="${loginModel.password}"
 							th:onInvalid="'FormValidator.validate(this, \'' +  
 								#{contact-us-form.email.empty} + '\',\'' + 
 								#{contact-us-form.email.invalid} + '\');'"></input>

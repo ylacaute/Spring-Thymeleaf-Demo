@@ -1,4 +1,4 @@
-package org.yla.demo.thymeleaf.mvc.page;
+package org.yla.demo.thymeleaf.mvc.page.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

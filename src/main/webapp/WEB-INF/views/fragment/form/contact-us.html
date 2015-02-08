@@ -4,7 +4,7 @@
 <body>
 	<section th:fragment="contact-us">
 		<form id="contact-us-form" class="form-horizontal" method="post" th:action="${action}" th:object="${contactUsModel}">
-			<p>Action : <span th:text="${formAction}"></span></p>
+			<input type="hidden" name="forward" th:value="${forward}"></input>
 			<fieldset>
 				<legend>Contact us</legend>
 				<div class="form-group">

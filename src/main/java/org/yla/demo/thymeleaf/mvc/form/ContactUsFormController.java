@@ -12,18 +12,17 @@ import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
 import org.yla.lib.skeleton.controller.BaseController;
 
 @Controller
-public class ContactUsController extends BaseController {
+public class ContactUsFormController extends BaseController {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ContactUsController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ContactUsFormController.class);
 	
-	public ContactUsController() {
+	public ContactUsFormController() {
 	}
-	
 	
 	@RequestMapping(value = RequestMappingConstants.SUBMIT_CONTACTUS_FORM, method = RequestMethod.POST)
-	public String submitContactUsPage(Model model, @Valid ContactUsModel contactUsModel) {
+	public String submitContactUsForm(Model model, @Valid ContactUsModel contactUsModel, String forward) {
 		LOG.info("Submit the contact us form : {}", contactUsModel);
-		return RequestMappingConstants.HOME_PAGE;
+		return RequestMappingConstants.FORWARD + forward;
 	}
-	
+		
 }

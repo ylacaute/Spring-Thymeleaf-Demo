@@ -27,11 +27,12 @@
 	  	</div>
 	  	<div class="row">
 			<div class="col-sm-12" th:include="/fragment/form/contact-us"
-				th:with="action=@{/contactUs}, model=${contactUsModel}">
+				th:with="action=@{/form/contactUs}, model=${contactUsModel}, forward='/home'">
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12" th:include="/fragment/form/login" th:with="action=@{/contactUs}">
+			<div class="col-sm-12" th:include="/fragment/form/login" 
+				th:with="action=@{/form/login}, model=${loginModel}, forward='/home'">
 			</div>
 		</div>
 	</div>

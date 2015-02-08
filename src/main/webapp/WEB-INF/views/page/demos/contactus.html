@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/layout/page/page-a4"
+	th:with="pageTitle='Contact Us Page'">
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12" th:include="/fragment/form/contact-us"
+				th:with="action=@{/form/contactUs}, model=${contactUsModel}, forward='/demos/contactus'">
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

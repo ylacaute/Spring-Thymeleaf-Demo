@@ -10,19 +10,10 @@ public class RequestMappingConstants {
   	public static final String FRAG_STATUS_MESSAGE = "/fragment/misc/statusMessage :: message";
 
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-	/* page
+	/* PAGES
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	public static final String GET_HOME_PAGE = "/home";
 	public static final String HOME_PAGE = "/page/home/home";
-	
-	public static final String GET_LAYOUT_PAGE = "/demos/layout";
-	public static final String LAYOUT_PAGE = "/page/demos/layout";
-	
-	public static final String GET_LARGE_LAYOUT_PAGE = "/demos/layout-large";
-	public static final String LARGE_LAYOUT_PAGE = "/page/demos/layout-large";
-	
-	public static final String GET_CUSTOM_LAYOUT_PAGE = "/demos/layout-custom";
-	public static final String CUSTOM_LAYOUT_PAGE = "/page/demos/layout-custom";
 	
 	public static final String GET_ACCOUNT_PAGE = "/account";
 	public static final String ACCOUNT_PAGE = "/page/account/account";
@@ -33,10 +24,24 @@ public class RequestMappingConstants {
 	public static final String GET_MODAL_FRAG = "/modal/{modalFramentName}";
 	public static final String MODAL_FRAG_DIR = "/fragment/modal/";
 
+  	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* DEMO PAGES
+  	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	public static final String GET_LAYOUT_PAGE = "/demos/layout";
+	public static final String LAYOUT_PAGE = "/page/demos/layout";
+	
+	public static final String GET_LARGE_LAYOUT_PAGE = "/demos/layout-large";
+	public static final String LARGE_LAYOUT_PAGE = "/page/demos/layout-large";
+	
+	public static final String GET_CUSTOM_LAYOUT_PAGE = "/demos/layout-custom";
+	public static final String CUSTOM_LAYOUT_PAGE = "/page/demos/layout-custom";
+
+	public static final String GET_CONTACTUS_PAGE = "/demos/contactus";
+	public static final String CONTACTUS_PAGE = "/page/demos/contactus";
 	
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-	/* FRAGMENTS
+	/* FORMS
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-	public static final String SUBMIT_CONTACTUS_FORM = "/contactUs";
-	
+	public static final String SUBMIT_CONTACTUS_FORM = "/form/contactUs";
+	public static final String SUBMIT_LOGIN_FORM = "/form/login";
 }
