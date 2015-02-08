@@ -12,8 +12,7 @@
 				<h4>Post-Forward</h4>
 				<p>This form has been created with a forward attribute : when the form is submited, Spring forward
 					to this page controller. This is faster, but you will have to rewrite your URL.</p>
-				<div th:include="/fragment/form/contact-us"
-					th:with="action=@{/form/contactUs}, model=${contactUsModel}">
+				<div th:include="/fragment/form/contact-us">
 				</div>
 			</div>
 		</div>
@@ -24,8 +23,7 @@
 					to the browser who will make a new request to this page. The URL will be as expected. This is the common
 					way to do. The good stuff here is that we have a specific form controller, which is only linked to
 					the form fragment, not the page which use this fragment.</p>
-				<div th:include="/fragment/form/login"
-					th:with="action=@{/form/login}, model=${loginModel}">
+				<div th:include="/fragment/form/login">
 				</div>
 			</div>
 		</div>
