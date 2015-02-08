@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+	<div layout:fragment="custom-page" class="container" th:remove="tag">
+		<!-- We need to include header and main in the same DIV in case we want a footer fixed on bot -->
+		<div id="main-wrapper">
+			<div id="main">
+				<div layout:fragment="page-header" th:remove="tag">
+					[PAGE HEADER LAYOUT]
+			   	</div>
+				<section layout:fragment="page-content" th:remove="tag">
+					[PAGE CONTENT LAYOUT]
+			   	</section>
+			</div>
+		</div>
+		<footer layout:fragment="page-footer" th:remove="tag">
+			[FOOTER LAYOUT]
+		</footer>
+	</div>
+
+  </body>
+</html>

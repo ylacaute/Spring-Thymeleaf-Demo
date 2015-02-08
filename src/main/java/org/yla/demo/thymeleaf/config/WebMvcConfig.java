@@ -28,7 +28,7 @@ import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 @Order(2)
 @Configuration
 @ComponentScan(basePackages = {
-		"org.yla.demo.thymeleaf.controller", 
+		"org.yla.demo.thymeleaf.mvc", 
 		"org.yla.demo.thymeleaf.config.web" })
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 

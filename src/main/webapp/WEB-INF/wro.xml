@@ -7,18 +7,17 @@
 	<group name="common">
 		<js>/webjars/jquery/2.1.3/jquery.min.js</js>
 		<js>/webjars/bootstrap/3.3.2/js/bootstrap.min.js</js>
-		
 		<js>/assets/js/Constants.js</js>
-		<js>/assets/js/utils/FunctionUtils.js</js>
-		<js>/assets/js/pages/PageController.js</js>
-		<js>/assets/js/pages/HomeController.js</js>
-		<js>/assets/js/pages/AccountController.js</js>
-		<js>/assets/js/pages/demos/LayoutController.js</js>
-		
-		<css>/assets/css/layouts/site/default.css</css>
-		<css>/assets/css/theme/default.css</css>
+		<js>/assets/js/util/FunctionUtils.js</js>
+		<js>/assets/js/util/FormValidator.js</js>
+		<js>/assets/js/page/PageController.js</js>
+		<js>/assets/js/page/HomeController.js</js>
+		<js>/assets/js/page/AccountController.js</js>
+		<js>/assets/js/page/LayoutController.js</js>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap.min.css</css>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap-theme.css</css>
+		<css>/assets/css/layout/site/default.css</css>
+		<css>/assets/css/theme/default.css</css>
 	</group>
 
 </groups>

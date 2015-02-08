@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 @Configuration
 @ComponentScan(basePackages = "org.yla.demo.thymeleaf", excludeFilters = { 
 	@ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = WebMvcConfig.class),
-	@ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*web.*"),
+	@ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*mvc.*"),
 	@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class)})
 public class RootConfig {
 

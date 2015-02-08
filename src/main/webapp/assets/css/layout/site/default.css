@@ -1,0 +1,41 @@
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */
+/* CSS FOR STANDARD SITE LAYOUT  
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */
+
+/* NO OUTLINE */
+.btn, .btn:focus, .btn:active, a, a:active, .nav-tabs a, .panel-title > a {
+	outline: none !important;
+	text-decoration: none;
+}
+
+/* FIXED FOOTER ON BOT (footer must have fixed height) */
+html, body {
+	height: 100%;
+}
+#main-wrapper {
+	min-height: 100%;
+}
+#main {
+	padding-bottom: 180px;
+	overflow:auto;
+}
+ #main section {
+ 	margin-bottom: 20px;
+}
+footer {
+  	position: relative;
+  	margin-top: -180px;
+  	height: 180px;
+  	clear:both;
+  	color: #FFF;
+	background-color: #002233;
+} 
+/* !FIXED FOOTER ON BOT */
+
+/* Ajust logo position in top menu*/
+#logo {
+	margin-top: -9px;
+}
+
