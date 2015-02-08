@@ -5,8 +5,6 @@ public class RequestMappingConstants {
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	/* COMMON
 	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-  	public static final String REDIRECT = "redirect:";
-  	public static final String FORWARD = "forward:";
   	public static final String FRAG_STATUS_MESSAGE = "/fragment/misc/statusMessage :: message";
 
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -36,8 +34,8 @@ public class RequestMappingConstants {
 	public static final String GET_CUSTOM_LAYOUT_PAGE = "/demos/layout-custom";
 	public static final String CUSTOM_LAYOUT_PAGE = "/page/demos/layout-custom";
 
-	public static final String GET_CONTACTUS_PAGE = "/demos/contactus";
-	public static final String CONTACTUS_PAGE = "/page/demos/contactus";
+	public static final String GET_FORM_PAGE = "/demos/form";
+	public static final String FORM_PAGE = "/page/demos/form";
 	
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	/* FORMS

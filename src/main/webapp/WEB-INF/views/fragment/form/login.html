@@ -4,7 +4,8 @@
 <body>
 	<section th:fragment="login">
 		<form th:fragment="login" id="login-form" class="form-horizontal" method="post" th:action="${action}" th:object="${loginModel}">
-			<input type="hidden" name="forward" th:value="${forward}"></input>
+			<input type="hidden" th:field="${loginModel.forward}"></input>
+			<input type="hidden" th:field="${loginModel.redirect}"></input>
 			<fieldset>
 				<legend>Login Form</legend>
 				<div class="form-group">

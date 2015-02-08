@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.PageModelConstants;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
-import org.yla.demo.thymeleaf.mvc.form.ContactUsModel;
-import org.yla.demo.thymeleaf.mvc.form.LoginModel;
-import org.yla.lib.skeleton.controller.PageController;
+import org.yla.lib.skeleton.mvc.BasePageController;
 
 /**
  * The HomeController handle main requests to display the home page.
@@ -21,7 +19,7 @@ import org.yla.lib.skeleton.controller.PageController;
  *
  */
 @Controller
-public class HomeController extends PageController {
+public class HomeController extends BasePageController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
 	
@@ -39,7 +37,7 @@ public class HomeController extends PageController {
 	 */
 	@RequestMapping(value = {"", "/", "index*"}, method = RequestMethod.GET)
 	public String getRootPage(Model model) {
-		return RequestMappingConstants.FORWARD + RequestMappingConstants.GET_HOME_PAGE;
+		return "forward:" + RequestMappingConstants.GET_HOME_PAGE;
 	}
 	
 	/**
@@ -51,8 +49,6 @@ public class HomeController extends PageController {
 	@RequestMapping(value = RequestMappingConstants.GET_HOME_PAGE)
 	public String getHomePage(Model model) {
 		LOG.info("Display the home page");
-		model.addAttribute("contactUsModel", new ContactUsModel());
-		model.addAttribute("loginModel", new LoginModel());
 		return RequestMappingConstants.HOME_PAGE;
 	}
 

@@ -15,7 +15,7 @@ import org.yla.demo.thymeleaf.domain.widget.Widget;
 import org.yla.demo.thymeleaf.domain.widget.WidgetType;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
 import org.yla.demo.thymeleaf.service.widget.WidgetService;
-import org.yla.lib.skeleton.controller.BaseController;
+import org.yla.lib.skeleton.mvc.BaseController;
 
 @Controller
 public class WidgetController extends BaseController {

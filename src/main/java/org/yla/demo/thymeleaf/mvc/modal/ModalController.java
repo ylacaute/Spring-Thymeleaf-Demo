@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
-import org.yla.lib.skeleton.controller.BaseController;
+import org.yla.lib.skeleton.mvc.BaseController;
 
 @Controller
 public class ModalController extends BaseController {

@@ -9,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
-import org.yla.lib.skeleton.controller.BaseController;
+import org.yla.lib.skeleton.mvc.BaseFormController;
 
 @Controller
-public class LoginFormController extends BaseController {
+public class LoginFormController extends BaseFormController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LoginFormController.class);
 	
@@ -20,9 +20,9 @@ public class LoginFormController extends BaseController {
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.SUBMIT_LOGIN_FORM, method = RequestMethod.POST)
-	public String submitLoginForm(Model model, @Valid LoginModel loginModel, String forward) {
+	public String submitLoginForm(Model model, @Valid LoginModel loginModel) throws Exception {
 		LOG.info("Submit the login form : {}", loginModel);
-		return RequestMappingConstants.FORWARD + forward;
+		return super.follow(loginModel);
 	}
 		
 }

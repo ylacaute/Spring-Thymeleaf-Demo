@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/layout/page/page-a4"
-	th:with="pageTitle='Home Page', 
+	th:with="pageTitle='Home Page', pageSubTitle='Advanced Thymeleaf Demo', 
 	onLoad='HomeController.onLoad();', 
 	onReady='HomeController.onReady();'">
 <head>
@@ -19,22 +19,11 @@
 		   			<form id="form" class="form-horizontal" th:action="@{/home}" th:object="${widget}" method="post">
 						<fieldset>
 							<p>COMING SOON :)</p>
-							<p>contactUsModel.name : <span th:text="${contactUsModel.name}"></span></p>
 						</fieldset>
 					</form>	
 		   		</div>
 		  	</div>
 	  	</div>
-	  	<div class="row">
-			<div class="col-sm-12" th:include="/fragment/form/contact-us"
-				th:with="action=@{/form/contactUs}, model=${contactUsModel}, forward='/home'">
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12" th:include="/fragment/form/login" 
-				th:with="action=@{/form/login}, model=${loginModel}, forward='/home'">
-			</div>
-		</div>
 	</div>
 	
 </body>

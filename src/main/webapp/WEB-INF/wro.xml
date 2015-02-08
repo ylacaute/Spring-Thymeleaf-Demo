@@ -17,6 +17,7 @@
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap.min.css</css>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap-theme.css</css>
 		<css>/assets/css/layout/site/default.css</css>
+		<css>/assets/css/layout/page/default.css</css>
 		<css>/assets/css/theme/default.css</css>
 	</group>
 

@@ -7,11 +7,14 @@
 	th:with="onLoad=${onLoad}, onReady=${onReady}">
 <head>
 	<title th:text="${pageTitle}">[PAGE TITLE]</title>
-	<link rel="stylesheet" th:href="@{/assets/css/layout/page/standard.css}" />
+	<link rel="stylesheet" th:href="@{/assets/css/layout/page/page-large.css}" />
 </head>
 <body>
 	<section layout:fragment="main-content">
 		<h1 th:text="${pageTitle}">[PAGE TITLE]</h1>
+		<th:block th:if="${pageSubTitle != null}">
+			<p class="page-sub-title" th:text="${pageSubTitle}">[PAGE SUBTITLE]</p>
+		</th:block>
 		<div layout:fragment="page-content">
 			[PAGE CONTENT]
 	   	</div>

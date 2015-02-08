@@ -9,7 +9,7 @@ h1, h2, h3, input, textarea, button, select, option, label, optgroup {
     font-weight: 700;
 }
 
-section {
+#main > section {
 	background-color: #F9F9F9;
 	border: 1px solid #F0F0F0;
 	border-radius: 3px;
@@ -18,3 +18,17 @@ footer {
 	color: #FFF;
 	background-color: #112233;
 }
+
+/* PAGE SUBTITLE */
+.page-sub-title {
+	color: #5588aa;
+	font-weight: bold;
+    margin-top: -5px;
+}
+.page-sub-title:after {
+    content: "}";
+}
+.page-sub-title:before {
+    content: "{";
+}
+/* !PAGE SUBTITLE */

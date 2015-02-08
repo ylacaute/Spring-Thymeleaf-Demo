@@ -10,7 +10,7 @@ public class PageModelConstants {
 	 */
 	public static final String HOME = "home";
 	public static final String ACCOUNT = "account";
-	public static final String DEMOS_LAYOUT = "layout";
-	public static final String DEMOS_FORM = "form";
+	public static final String DEMO_LAYOUT = "layout";
+	public static final String DEMO_FORM = "form";
 	
 }

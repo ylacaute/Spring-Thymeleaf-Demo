@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.PageModelConstants;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
-import org.yla.lib.skeleton.controller.PageController;
+import org.yla.lib.skeleton.mvc.BasePageController;
 
 /**
  *
@@ -16,12 +16,12 @@ import org.yla.lib.skeleton.controller.PageController;
  *
  */
 @Controller
-public class LayoutController extends PageController {
+public class LayoutController extends BasePageController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(LayoutController.class);
 	
 	public LayoutController() {
-		super(PageModelConstants.DEMOS_LAYOUT);
+		super(PageModelConstants.DEMO_LAYOUT);
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.GET_LAYOUT_PAGE, method = RequestMethod.GET)

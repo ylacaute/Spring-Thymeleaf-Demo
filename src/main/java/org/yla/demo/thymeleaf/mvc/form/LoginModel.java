@@ -2,7 +2,9 @@ package org.yla.demo.thymeleaf.mvc.form;
 
 import javax.validation.constraints.NotNull;
 
-public class LoginModel {
+import org.yla.lib.skeleton.mvc.FormModel;
+
+public class LoginModel extends FormModel {
 	
 	@NotNull
 	private String login;
@@ -32,6 +34,7 @@ public class LoginModel {
 			.append(this.getClass().getSimpleName())
 			.append(" { login:").append(login)
 			.append(", password:").append(password)
+			.append(super.toString())
 			.append(" }")
 			.toString();
 	}

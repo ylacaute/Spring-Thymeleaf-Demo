@@ -2,7 +2,9 @@ package org.yla.demo.thymeleaf.mvc.form;
 
 import javax.validation.constraints.NotNull;
 
-public class ContactUsModel {
+import org.yla.lib.skeleton.mvc.FormModel;
+
+public class ContactUsModel extends FormModel {
 
 	@NotNull
 	private String name;
@@ -57,6 +59,7 @@ public class ContactUsModel {
 			.append(", email:").append(email)
 			.append(", subject:").append(subject)
 			.append(", message:").append(message)
+			.append(super.toString())
 			.append(" }")
 			.toString();
 	}

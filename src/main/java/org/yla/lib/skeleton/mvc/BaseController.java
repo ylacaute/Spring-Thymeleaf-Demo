@@ -1,4 +1,4 @@
-package org.yla.lib.skeleton.controller;
+package org.yla.lib.skeleton.mvc;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

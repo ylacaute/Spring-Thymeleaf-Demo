@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div layout:fragment="custom-page">
-		<div layout:include="/layout/page/custom :: custom-page" th:with="pageTitle='Custom Layout Sample'" th:remove="tag">
+		<div layout:include="/layout/page/page-custom :: custom-page" th:with="pageTitle='Custom Layout Sample'" th:remove="tag">
 			<div layout:fragment="page-header">
 				<div class="container">
 					<div th:replace="/fragment/header/header :: header">[HEADER]</div>
