@@ -37,6 +37,9 @@ public class RequestMappingConstants {
 	public static final String GET_FORM_PAGE = "/demos/form";
 	public static final String FORM_PAGE = "/page/demos/form";
 	
+	public static final String GET_AJAXFORM_PAGE = "/demos/form-ajax";
+	public static final String AJAXFORM_PAGE = "/page/demos/form-ajax";
+	
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	/* FORMS
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */

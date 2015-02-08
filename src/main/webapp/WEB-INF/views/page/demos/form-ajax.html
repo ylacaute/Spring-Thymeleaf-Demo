@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/layout/page/page-a4"
+	th:with="pageTitle='Ajax Form Page', pageSubTitle='Managing Form Controller'">
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>This form is a Thymeleaf fragment. The submit is done in Javascript and the result will be directly
+					displayed without reloading the page.</p>
+				<div th:include="/fragment/form/contact-us" th:with="ajaxSubmit=true">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

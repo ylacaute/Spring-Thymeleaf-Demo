@@ -26,8 +26,8 @@ public class FormController extends BasePageController {
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.GET_FORM_PAGE)
-	public String getContactUsPage(Model model) {
-		LOG.info("Display the demos contact us page");
+	public String getFormPage(Model model) {
+		LOG.info("Display the demos form page");
 		
 		ContactUsModel contactUsModel = new ContactUsModel();
 		contactUsModel.setForward(RequestMappingConstants.GET_FORM_PAGE);
@@ -40,4 +40,13 @@ public class FormController extends BasePageController {
 		return RequestMappingConstants.FORM_PAGE;
 	}
 
+	@RequestMapping(value = RequestMappingConstants.GET_AJAXFORM_PAGE)
+	public String getAjaxFormPage(Model model) {
+		LOG.info("Display the demos ajax form page");
+		
+		ContactUsModel contactUsModel = new ContactUsModel();
+		model.addAttribute("contactUsModel", contactUsModel);
+		
+		return RequestMappingConstants.AJAXFORM_PAGE;
+	}
 }

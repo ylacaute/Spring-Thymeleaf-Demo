@@ -13,7 +13,8 @@
 		<js>/assets/js/page/PageController.js</js>
 		<js>/assets/js/page/HomeController.js</js>
 		<js>/assets/js/page/AccountController.js</js>
-		<js>/assets/js/page/LayoutController.js</js>
+		<js>/assets/js/page/demo/LayoutController.js</js>
+		<js>/assets/js/page/demo/FormController.js</js>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap.min.css</css>
 		<css>/webjars/bootstrap/3.3.2/css/bootstrap-theme.css</css>
 		<css>/assets/css/layout/site/default.css</css>
