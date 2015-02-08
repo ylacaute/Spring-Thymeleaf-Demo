@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <body>
 	<section th:fragment="contact-us">
-		<form id="contact-us-form" class="form-horizontal" method="post" th:action="${action}">
+		<form id="contact-us-form" class="form-horizontal" method="post" th:action="${action}" th:object="${contactUsModel}">
 			<p>Action : <span th:text="${formAction}"></span></p>
 			<fieldset>
 				<legend>Contact us</legend>
@@ -13,6 +13,7 @@
 						<input class="form-control input-xxlarge" id="name" placeholder="Name"
 							required="required" pattern="[a-zA-Z]+"
 							onChange="FormValidator.resetValidation(this)"
+							th:field="${contactUsModel.name}"
 							th:onInvalid="'FormValidator.validate(this, \'' +  
 								#{contact-us-form.name.empty} + '\',\'' + 
 								#{contact-us-form.name.invalid} + '\');'"></input>
@@ -23,6 +24,7 @@
 					<div class="col-sm-10">
 						<input class="form-control input-xxlarge" type="email" placeholder="E-Mail"
 							required="required"
+							th:field="*{email}"
 							onChange="FormValidator.resetValidation(this)"
 							th:onInvalid="'FormValidator.validate(this, \'' +  
 								#{contact-us-form.email.empty} + '\',\'' + 
@@ -34,10 +36,24 @@
 					<div class="col-sm-10">
 						<input class="form-control input-xxlarge" id="subject" placeholder="Subject" 
 							pattern="[a-zA-Z]+" required="required"
+							th:field="*{subject}"
 							onChange="FormValidator.resetValidation(this)"
 							th:onInvalid="'FormValidator.validate(this, \'' +  
 								#{contact-us-form.subject.empty} + '\',\'' + 
 								#{contact-us-form.subject.invalid} + '\');'"></input>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="message">Message</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" id="message" name="message" placeholder="Message details" 
+							required="required" rows="5"
+							th:field="*{message}"
+							onChange="FormValidator.resetValidation(this)"
+							th:onInvalid="'FormValidator.validate(this, \'' +
+								#{contact-us-form.message.empty} + '\',\'' + 
+								#{contact-us-form.message.invalid} + '\');'"></textarea>
 					</div>
 				</div>
 				<div class="form-group">

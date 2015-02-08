@@ -1,5 +1,7 @@
 package org.yla.demo.thymeleaf.mvc.form;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,9 @@ public class ContactUsController extends BaseController {
 	}
 	
 	
-	@RequestMapping(value = RequestMappingConstants.SUBMIT_CONATCTUS_FORM, method = RequestMethod.POST)
-	public String submitContactUsPage(Model model) {
-		LOG.info("Submit the contact us form");
+	@RequestMapping(value = RequestMappingConstants.SUBMIT_CONTACTUS_FORM, method = RequestMethod.POST)
+	public String submitContactUsPage(Model model, @Valid ContactUsModel contactUsModel) {
+		LOG.info("Submit the contact us form : {}", contactUsModel);
 		return RequestMappingConstants.HOME_PAGE;
 	}
 	

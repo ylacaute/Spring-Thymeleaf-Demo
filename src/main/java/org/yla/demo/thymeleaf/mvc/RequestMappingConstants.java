@@ -37,6 +37,6 @@ public class RequestMappingConstants {
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	/* FRAGMENTS
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-	public static final String SUBMIT_CONATCTUS_FORM = "/contactUs";
+	public static final String SUBMIT_CONTACTUS_FORM = "/contactUs";
 	
 }

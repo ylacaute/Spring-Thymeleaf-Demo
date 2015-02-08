@@ -19,13 +19,15 @@
 		   			<form id="form" class="form-horizontal" th:action="@{/home}" th:object="${widget}" method="post">
 						<fieldset>
 							<p>COMING SOON :)</p>
+							<p>contactUsModel.name : <span th:text="${contactUsModel.name}"></span></p>
 						</fieldset>
 					</form>	
 		   		</div>
 		  	</div>
 	  	</div>
 	  	<div class="row">
-			<div class="col-sm-12" th:include="/fragment/form/contact-us" th:with="action=@{/contactUs}">
+			<div class="col-sm-12" th:include="/fragment/form/contact-us"
+				th:with="action=@{/contactUs}, model=${contactUsModel}">
 			</div>
 		</div>
 		<div class="row">

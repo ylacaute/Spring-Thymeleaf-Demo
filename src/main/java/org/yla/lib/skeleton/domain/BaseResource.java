@@ -107,13 +107,11 @@ public abstract class BaseResource implements Serializable, Comparable<BaseResou
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		return builder
+		return new StringBuilder()
 			.append(this.getClass().getSimpleName())
-			.append("{")
-			.append("id:").append(id).append(", ")
-			.append("version:").append(version)
-			.append("}")
+			.append(" { id:").append(id)
+			.append(", version:").append(version)
+			.append(" }")
 			.toString();
 	}
 

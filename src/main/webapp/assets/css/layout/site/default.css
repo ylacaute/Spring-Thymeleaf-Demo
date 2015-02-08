@@ -38,4 +38,7 @@ footer {
 #logo {
 	margin-top: -9px;
 }
-
+/* Misc */
+textarea {
+    resize: none;
+}
