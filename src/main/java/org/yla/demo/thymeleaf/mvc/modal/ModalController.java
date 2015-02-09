@@ -20,7 +20,7 @@ public class ModalController extends BaseController {
 	
 	
 	@RequestMapping(value = RequestMappingConstants.GET_MODAL_FRAG, method = RequestMethod.GET)
-	public String getHomePage(Model model, @PathVariable String modalFramentName) throws Exception {
+	public String getModalFragment(Model model, @PathVariable String modalFramentName) throws Exception {
 		LOG.debug("[AJAX] Loading window modal fragment {}", modalFramentName);
 		return RequestMappingConstants.MODAL_FRAG_DIR + modalFramentName;
 	}

@@ -1,6 +1,6 @@
 package org.yla.lib.skeleton.mvc;
 
-public abstract class FormModel {
+public abstract class BaseFormModel {
 
 	private String forward;
 	

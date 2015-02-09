@@ -29,16 +29,17 @@ public class WidgetController extends BaseController {
 		this.widgetService = widgetService;		
 	}
 	
+	// Will Change
 	@ModelAttribute("allWidgetTypes")
     public List<WidgetType> getAllWidgetTypes() {
         return widgetService.getAllWidgetTypes();
     }
 
+	// Will Change
 	@ModelAttribute("allWidgets")
     public List<Widget> getAllWidgets() {
         return widgetService.getAllWidgets();
     }
-	
 	
 	@RequestMapping(value = RequestMappingConstants.GET_WIDGET_FRAG, method = RequestMethod.GET)
 	public String loadWidget(Model model, @PathVariable String widgetId) throws Exception {

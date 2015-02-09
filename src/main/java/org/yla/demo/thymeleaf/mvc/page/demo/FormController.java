@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.PageModelConstants;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
 import org.yla.demo.thymeleaf.mvc.form.ContactUsModel;
@@ -25,8 +26,8 @@ public class FormController extends BasePageController {
 		super(PageModelConstants.DEMO_FORM);
 	}
 	
-	@RequestMapping(value = RequestMappingConstants.GET_FORM_PAGE)
-	public String getFormPage(Model model) {
+	@RequestMapping(value = RequestMappingConstants.GET_FORM_PAGE, method = RequestMethod.GET)
+	public String getDemoFormPage(Model model) {
 		LOG.info("Display the demos form page");
 		
 		ContactUsModel contactUsModel = new ContactUsModel();
@@ -40,8 +41,8 @@ public class FormController extends BasePageController {
 		return RequestMappingConstants.FORM_PAGE;
 	}
 
-	@RequestMapping(value = RequestMappingConstants.GET_AJAXFORM_PAGE)
-	public String getAjaxFormPage(Model model) {
+	@RequestMapping(value = RequestMappingConstants.GET_AJAXFORM_PAGE, method = RequestMethod.GET)
+	public String getAjaxDemoFormPage(Model model) {
 		LOG.info("Display the demos ajax form page");
 		
 		ContactUsModel contactUsModel = new ContactUsModel();

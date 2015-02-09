@@ -50,6 +50,7 @@ public class WidgetService extends BaseService {
 		widget.setFragmentName("textWidget");
 		widgets.add(widget);
 		
+		LOG.info("getAllWidgets : {} returned.", widgets.size());
 		return widgets;
 	}
 	

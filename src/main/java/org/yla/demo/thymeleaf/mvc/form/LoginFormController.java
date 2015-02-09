@@ -24,5 +24,5 @@ public class LoginFormController extends BaseFormController {
 		LOG.info("Submit the login form : {}", loginModel);
 		return super.follow(loginModel);
 	}
-		
+
 }

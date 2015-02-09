@@ -52,6 +52,7 @@ public class HomeController extends BasePageController {
 		return RequestMappingConstants.HOME_PAGE;
 	}
 
+	// Just for test
 	@RequestMapping(value = "/page/blank", method = RequestMethod.GET)
 	public String getBlankPage(Model model) {
 		LOG.info("Display the blank page");

@@ -25,19 +25,19 @@ public class LayoutController extends BasePageController {
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.GET_LAYOUT_PAGE, method = RequestMethod.GET)
-	public String getLayoutPage(Model model) {
+	public String getDemoLayoutPage(Model model) {
 		LOG.info("Display the demos layout page");
 		return RequestMappingConstants.LAYOUT_PAGE;
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.GET_LARGE_LAYOUT_PAGE, method = RequestMethod.GET)
-	public String getLargeLayoutPage(Model model) {
+	public String getDemoLargeLayoutPage(Model model) {
 		LOG.info("Display the demos large layout page");
 		return RequestMappingConstants.LARGE_LAYOUT_PAGE;
 	}
 	
 	@RequestMapping(value = RequestMappingConstants.GET_CUSTOM_LAYOUT_PAGE, method = RequestMethod.GET)
-	public String getCustomLayoutPage(Model model) {
+	public String getDemoCustomLayoutPage(Model model) {
 		LOG.info("Display the demos custom layout page");
 		return RequestMappingConstants.CUSTOM_LAYOUT_PAGE;
 	}

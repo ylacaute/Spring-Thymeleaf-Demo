@@ -11,11 +11,15 @@ public abstract class BaseFormController extends BaseController {
 	public BaseFormController() {
 	}
 	
-	public String follow(FormModel formModel) throws Exception {
-		if (!StringUtils.isEmpty(formModel.getRedirect())) {
+	public String follow(BaseFormModel formModel) throws Exception {
+		String redirect = formModel.getRedirect();
+		String forward = formModel.getRedirect();
+		if (!StringUtils.isEmpty(redirect)) {
+			LOG.debug("redirect to {}", redirect);
 			return "redirect:" + formModel.getRedirect();
-		} else if (!StringUtils.isEmpty(formModel.getForward())) {
-			return "forward:" + formModel.getForward();
+		} else if (!StringUtils.isEmpty(forward)) {
+			LOG.debug("forward to {}", forward);
+			return "forward:" + forward;
 		}
 		throw new Exception("No forward and no redirect has been defined in the formModel !");
 	}
