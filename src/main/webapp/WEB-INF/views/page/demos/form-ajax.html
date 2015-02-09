@@ -3,7 +3,10 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="/layout/page/page-a4"
-	th:with="pageTitle='Ajax Form Page', pageSubTitle='Managing Form Controller'">
+	th:with="pageTitle='Ajax Form Page',
+	pageSubTitle='Managing Form Controller',
+	onLoad='FormController.onLoad();', 
+	onReady='FormController.onReady();'">
 <body>
 
 	<div layout:fragment="page-content">

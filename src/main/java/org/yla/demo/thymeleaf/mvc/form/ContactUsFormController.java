@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
 import org.yla.lib.skeleton.mvc.BaseFormController;
+import org.yla.lib.skeleton.mvc.MessageHelper;
 
 @Controller
 public class ContactUsFormController extends BaseFormController {
@@ -52,7 +53,13 @@ public class ContactUsFormController extends BaseFormController {
 			headers = "x-requested-with=XMLHttpRequest")
 	public String ajaxSubmitContactUsForm(HttpServletRequest req, Model model, @Valid ContactUsModel contactUsModel) throws Exception {
 		LOG.info("[AJAX] Submit the contact us form in ajax : {}", contactUsModel);
-		LOG.info("Header: {}", req.getHeader("X-Requested-With"));
+
+		// If success
+		MessageHelper.addSuccessAttribute(model, "SUCCESS !");
+		
+		// If failed
+		// 
+		
 		return RequestMappingConstants.FRAG_STATUS_MESSAGE;
 	}
 		    

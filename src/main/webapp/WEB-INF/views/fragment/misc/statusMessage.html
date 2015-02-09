@@ -6,7 +6,7 @@
 
 	<div th:fragment="message">
 		<th:block th:if="${message != null}">
-			<div th:replace="fragment/alert :: alertDismissableAutoHide(type=${#strings.toLowerCase(message.type)}, message=${message.message})">
+			<div th:replace="/fragment/misc/alert :: alertDismissableAutoHide(type=${#strings.toLowerCase(message.type)}, message=${message.message})">
 			</div>
 		</th:block>
 	</div>

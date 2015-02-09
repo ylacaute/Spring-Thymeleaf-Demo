@@ -7,6 +7,7 @@
 var FormController = (function () {
 	"use strict";
 	
+
 	// PRIVATE
 	
 	var URL = {
@@ -15,9 +16,6 @@ var FormController = (function () {
 	};
 
 	var modalReceiverId = "modalReceiver";
-	
-	
-	
 	
 	return {
 		
@@ -33,24 +31,42 @@ var FormController = (function () {
 	    	console.log("Demos form page ready.");
 		},
 		
-		submit : function(event) {
-			// We must cancel the submit action by the browser but still want the validation
-			//event.preventDefault();
+		submit : function(event, submitUrl) {
+			var $form = $('#contact-us-form');
 			
-			var $myForm = $('#contact-us-form');
-			if (!$myForm[0].checkValidity()) {
-			  // If the form is invalid, submit it. The form won't actually submit;
-			  // this will just cause the browser to display the native HTML5 error messages.
-			  //$myForm.find(':submit').click();
-				//$('<input type="submit">').hide().appendTo($myForm).click().remove();
-				//alert("form ready to submit in ajax");
-			} else {
-				//alert("what 2 ? :)");
-				event.stopPropagation();
-				event.preventDefault();
-			}
+			// Nothing to do, the broswer will display the invalid messages. 
+			if (!$form[0].checkValidity()) return;
+			
+			// Avoid the browser submit in order to do it in Ajax. 
+			event.preventDefault();
+		    var request = $.ajax({
+		        url: submitUrl,
+		        type: "post",
+		        data: $form.serialize()
+		    });
+		    request.done(function (response, textStatus, jqXHR){
+		        // Log a message to the console
+		        $("#messageReceiver").append(response);
+		    });
+		    request.fail(function (jqXHR, textStatus, errorThrown){
+		        console.error( "The following error occurred: " + textStatus, errorThrown);
+		    });
 		}
 		
 	}
 	
 })();
+
+/*
+
+// Constructor
+BasePage.call(this);
+
+
+// Define inheritance
+FormControllerClass.prototype = Object.create(BasePage.prototype);
+
+// Make a global variable
+var FormController = new FormControllerClass();
+
+*/

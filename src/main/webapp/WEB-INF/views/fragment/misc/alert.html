@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+    <div th:fragment="alert (type, message)" class="alert" th:classappend="'alert-' + ${type}">
+      <span th:text="${message}">Test</span>
+    </div>
+
+    <div th:fragment="alertDismissable (type, message)" class="alert alert-dismissable" th:classappend="'alert-' + ${type}">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <span th:text="${message}">Test</span>
+    </div>    
+    
+    <div id="msg" th:fragment="alertDismissableAutoHide (type, message)" class="alert alert-dismissable-effect" th:classappend="'alert-' + ${type}">
+    	<script th:inline="javascript">
+			/*<![CDATA[*/
+			    $(function() {
+			    	var timer = new Timer(8000, 0, function() {
+							timer.stop();
+							$('#msg').stop(true, true).fadeOut({ duration: 1000, queue: false }).slideUp(1000);
+						});
+						timer.start();
+			    });
+			/*]]>*/
+		</script>
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <span th:text="${message}">Test</span>
+    </div>
+    
+    <!-- 
+     -->    
+</body>
+</html>
+

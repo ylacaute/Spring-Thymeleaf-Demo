@@ -64,7 +64,7 @@
 						</th:block>
 						<th:block th:if="${ajaxSubmit != null and ajaxSubmit == true}">
 							<button type="submit" class="btn btn-default"
-								onClick="FormController.submit(event)">Send message</button>
+								th:onClick="'javascript:FormController.submit(event, \'' + @{/form/contactUs} + '\')'">Send message</button>
 						</th:block>
 					</div>
 				</div>
