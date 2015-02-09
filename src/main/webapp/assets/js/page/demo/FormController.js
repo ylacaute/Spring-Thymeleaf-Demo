@@ -41,7 +41,13 @@ var FormController = (function () {
 			if (!$myForm[0].checkValidity()) {
 			  // If the form is invalid, submit it. The form won't actually submit;
 			  // this will just cause the browser to display the native HTML5 error messages.
-			  $myForm.find(':submit').click();
+			  //$myForm.find(':submit').click();
+				//$('<input type="submit">').hide().appendTo($myForm).click().remove();
+				//alert("form ready to submit in ajax");
+			} else {
+				//alert("what 2 ? :)");
+				event.stopPropagation();
+				event.preventDefault();
 			}
 		}
 		

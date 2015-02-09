@@ -1,10 +1,10 @@
 package org.yla.demo.thymeleaf.mvc.form;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,8 +31,10 @@ public class ContactUsFormController extends BaseFormController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = RequestMappingConstants.SUBMIT_CONTACTUS_FORM, method = RequestMethod.POST)
-	public String submitContactUsForm(Model model, @Valid ContactUsModel contactUsModel) throws Exception {
+	public String submitContactUsForm(HttpServletRequest req, Model model, @Valid ContactUsModel contactUsModel) throws Exception {
 		LOG.info("Submit the contact us form : {}", contactUsModel);
+		LOG.info("Header: {}", req.getHeader("X-Requested-With"));
+		
 		return super.follow(contactUsModel);
 	}
 	
@@ -48,8 +50,9 @@ public class ContactUsFormController extends BaseFormController {
 	 */
 	@RequestMapping(value = RequestMappingConstants.SUBMIT_CONTACTUS_FORM, method = RequestMethod.POST, 
 			headers = "x-requested-with=XMLHttpRequest")
-	public String ajaxSubmitContactUsForm(Model model, @Valid ContactUsModel contactUsModel) throws Exception {
+	public String ajaxSubmitContactUsForm(HttpServletRequest req, Model model, @Valid ContactUsModel contactUsModel) throws Exception {
 		LOG.info("[AJAX] Submit the contact us form in ajax : {}", contactUsModel);
+		LOG.info("Header: {}", req.getHeader("X-Requested-With"));
 		return RequestMappingConstants.FRAG_STATUS_MESSAGE;
 	}
 		    
