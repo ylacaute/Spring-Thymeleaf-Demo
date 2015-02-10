@@ -22,7 +22,7 @@ For now, this project is personal. The main goal is to show how Thymeleaf can be
 
 ### Thymeleaf integration 
 * Advanced Layout (site, page, component)
-* HTML5 form validation (custom messages, i18n)
+* HTML5 form validation (custom messages, i18n, ajax option)
 * Spring Security integration (coming soon)
 * Internationalization 
 * Mobile compliant
@@ -33,7 +33,6 @@ For now, this project is personal. The main goal is to show how Thymeleaf can be
 
 ## TODO
 * Change input validation message on hover (currently, defined by the broswer)
-* Option to submit any form in ajax, use a status message, must be as generic as possible
 * Put all text in i18n messages
 * Add a service which define all available langages
 * Add a combo in the top menu to choose the langage

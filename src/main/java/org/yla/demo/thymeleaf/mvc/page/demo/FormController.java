@@ -26,7 +26,7 @@ public class FormController extends BasePageController {
 		super(PageModelConstants.DEMO_FORM);
 	}
 	
-	@RequestMapping(value = RequestMappingConstants.GET_FORM_PAGE, method = RequestMethod.GET)
+	@RequestMapping(value = RequestMappingConstants.GET_FORM_PAGE)
 	public String getDemoFormPage(Model model) {
 		LOG.info("Display the demos form page");
 		

@@ -11,9 +11,9 @@ public abstract class BaseFormController extends BaseController {
 	public BaseFormController() {
 	}
 	
-	public String follow(BaseFormModel formModel) throws Exception {
+	public String follow(FormModelSupport formModel) throws Exception {
 		String redirect = formModel.getRedirect();
-		String forward = formModel.getRedirect();
+		String forward = formModel.getForward();
 		if (!StringUtils.isEmpty(redirect)) {
 			LOG.debug("redirect to {}", redirect);
 			return "redirect:" + formModel.getRedirect();

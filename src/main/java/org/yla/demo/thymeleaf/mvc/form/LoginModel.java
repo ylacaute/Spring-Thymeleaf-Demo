@@ -2,9 +2,9 @@ package org.yla.demo.thymeleaf.mvc.form;
 
 import javax.validation.constraints.NotNull;
 
-import org.yla.lib.skeleton.mvc.BaseFormModel;
+import org.yla.lib.skeleton.mvc.FormModelSupport;
 
-public class LoginModel extends BaseFormModel {
+public class LoginModel extends FormModelSupport {
 	
 	@NotNull
 	private String login;
