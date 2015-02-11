@@ -17,7 +17,7 @@ In progress : build a powerful dashboard like iGoole (JQuery sortable) with Thym
 ### Common web technologies
 * HTML 5
 * Bootstrap 3
-* JQuery, JQuery
+* JQuery, JQuery UI
 * Web Resource Optimization
 * Module oriented JS
 * Oriented Object JS (coming soon)
