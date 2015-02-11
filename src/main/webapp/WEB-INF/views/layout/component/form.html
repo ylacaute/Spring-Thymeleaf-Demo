@@ -4,11 +4,13 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
-	<!-- We can't do this... This layout should define the th:object for the form but since it's
-		a layout, we don't know the exact bean name used (here formModel) and thymeleaf don't allow
-		us to change this bean neam, even if, in our case, the final model extends FormModel. -->
+	<!-- DONT WORK : THYMELEAF LIMITATION ?
+	    This layout should define the th:object for the form but since it's a layout, we don't know the 
+	    exact bean name used (so here, called formModel) and Thymeleaf don't allow us to change this bean
+	    name, even if, in our case, this formModel is the super class of the real model used.
+	-->
 	<section layout:fragment="form">
-		<form th:id="${formId}" class="form-horizontal" method="post" th:action="${formAction}" th:action="${formModel}">
+		<form th:id="${formId}" class="form-horizontal" method="post" th:action="${formAction}" th:object="${formModel}">
 			<fieldset>
 				<legend>Contact us</legend>
             	<div layout:fragment="form-content">

@@ -43,6 +43,9 @@ public class RequestMappingConstants {
 	public static final String GET_AJAXFORM_PAGE = "/demos/form-ajax";
 	public static final String AJAXFORM_PAGE = "/page/demos/form-ajax";
 	
+	public static final String GET_LAYOUTFORM_PAGE = "/demos/form-layout";
+	public static final String LAYOUTFORM_PAGE = "/page/demos/form-layout";
+	
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	/* FORMS
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
