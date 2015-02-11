@@ -20,7 +20,7 @@ In progress : build a powerful dashboard like iGoole (JQuery sortable) with Thym
 * JQuery, JQuery UI
 * Web Resource Optimization
 * Module oriented JS
-* Oriented Object JS (coming soon)
+* Object Oriented JS (coming soon)
 
 ### Thymeleaf integration 
 * Advanced Layout (site, page, component)
