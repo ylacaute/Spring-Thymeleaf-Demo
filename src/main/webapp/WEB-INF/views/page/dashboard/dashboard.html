@@ -7,27 +7,22 @@
 	onLoad='DashboardController.onLoad();', 
 	onReady='DashboardController.onReady();'">
 <head>
-<style>
-	.sortable-section > .row:hover {
-	}
-	#minus, #plus {
-		border: 2px dashed #d1d1d1;
-		margin-bottom: -4px;
-	}
-	.sortable-row-configurer {
-	}
-	.sortable-section.sortable-view-mode .sortable-row-configurer {
-		display: none;
-	}
-	.sortable-row:nth-child(2) {
-		/*margin-top: 0px;*/
-		/*background: #F00;*/
-	}
-</style>
 </head>
 <body>
 
 	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Let's play with this beautiful dashboard ! </p>
+				<ul>
+					<li>Mode management : View or Edit</li>
+					<li>Dynamic load of any Thymeleaf fragment, let's call them widgets</li>
+					<li>Configuration management : a simple JSON file retrieved in AJAX</li>
+					<li>Dynamic configuration loading</li>
+				</ul>
+				<br/>
+			</div>
+		</div>
 	  	<div class="row">
 			<div class="col-sm-12">
 				<div class="btn-group" data-toggle="buttons">
@@ -40,17 +35,15 @@
 				</div>
 				<button id="addHelloWidget" class="btn btn-default"
 					th:onClick="'javascript:DashboardController.addWidget(\'1\')'">Add HelloWorld widget</button>
-			</div>
-		</div>
-	  	<div class="row">
-			<div class="col-sm-12">
-				<div class="btn-group" data-toggle="buttons" style="float: right;">
-				  <label id="layout1Btn" class="btn btn-primary active">
-				    <input type="radio" name="options"  autocomplete="off" checked="checked"></input>Layout 1
-				  </label>
-				  <label id="layout2Btn" class="btn btn-primary">
-				    <input type="radio" name="options" autocomplete="off"></input>Layout 2
-				  </label>
+				<div style="float: right;">
+					<div class="btn-group" data-toggle="buttons" style="float: right;">
+					  <label id="layout1Btn" class="btn btn-primary active">
+					    <input type="radio" name="options"  autocomplete="off" checked="checked"></input>Layout 1
+					  </label>
+					  <label id="layout2Btn" class="btn btn-primary">
+					    <input type="radio" name="options" autocomplete="off"></input>Layout 2
+					  </label>
+					</div>
 				</div>
 			</div>
 		</div>
