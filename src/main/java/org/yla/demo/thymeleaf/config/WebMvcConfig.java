@@ -13,9 +13,11 @@ import org.springframework.format.support.FormattingConversionService;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import org.yla.demo.thymeleaf.config.interceptor.RequestCacheInterceptor;
 import org.yla.demo.thymeleaf.util.DateFormatter;
 import org.yla.demo.thymeleaf.util.EnumToStringConverter;
 
@@ -38,6 +40,9 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	@Value("${messages.cacheReloading}")
 	private int messagesCacheReloading;
+
+	@Value("${requestCacheEnabled}")
+	private boolean requestCacheEnabled;
 	
 	
 	public WebMvcConfig() {
@@ -49,9 +54,19 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 		RequestMappingHandlerMapping requestMappingHandlerMapping = super.requestMappingHandlerMapping();
 		requestMappingHandlerMapping.setUseSuffixPatternMatch(false);
 		requestMappingHandlerMapping.setUseTrailingSlashMatch(false);
+		requestMappingHandlerMapping.setInterceptors(getInterceptors());
+		requestMappingHandlerMapping.setContentNegotiationManager(mvcContentNegotiationManager());
 		return requestMappingHandlerMapping;
 	}
-
+	
+	@Override
+    protected void addInterceptors(InterceptorRegistry registry) {
+		LOG.info("[CONFIG] requestCacheEnabled : {}", requestCacheEnabled);
+		if (requestCacheEnabled) {
+			registry.addInterceptor(new RequestCacheInterceptor());
+		}
+    }
+	
 	@Bean
 	public DateFormatter<?> dateFormatter() {
 		return new DateFormatter<FormattingConversionService>(mvcConversionService());
@@ -64,6 +79,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
 	@Bean(name = "messageSource")
 	public MessageSource configureMessageSource() {
+		LOG.info("[CONFIG] messagesCacheReloading : {}", messagesCacheReloading);
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
 		messageSource.setBasename(MESSAGE_SOURCE);
 		messageSource.setDefaultEncoding("UTF-8");
@@ -88,5 +104,5 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-	
+
 }
