@@ -13,14 +13,11 @@
 
 	<div layout:fragment="page-content">
 	  	<div class="row">
-			<div class="col-sm-12" layout:include="/layout/component/panel :: panel" th:with="panelTitle='Form Panel'">
+			<div class="col-sm-12" layout:include="/layout/component/panel :: panel" th:with="panelTitle='Welcome Panel :)'">
 		   		<div layout:fragment="panel-body">
-		   			<p>Simple form HTML5 Validation</p>
-		   			<form id="form" class="form-horizontal" th:action="@{/home}" th:object="${widget}" method="post">
-						<fieldset>
-							<p>COMING SOON :)</p>
-						</fieldset>
-					</form>	
+		   			<p>Take a tour. Be aware that cache is fully disabled for development purpose 
+		   				so each request take a little longer than usual.
+		   			</p>
 		   		</div>
 		  	</div>
 	  	</div>

@@ -51,4 +51,10 @@ public class RequestMappingConstants {
   	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 	public static final String SUBMIT_CONTACTUS_FORM = "/form/contactUs";
 	public static final String SUBMIT_LOGIN_FORM = "/form/login";
+	
+  	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	/* JSON
+  	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	public static final String DASHBORD_CONFIG = "/dashboard/config/{configId}";
+	
 }

@@ -1,0 +1,24 @@
+{
+    "lines": [
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-12"
+                }
+            ]
+        },
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-3"
+                },
+                {
+                    "cssClass": "col-sm-6"
+                },
+                {
+                    "cssClass": "col-sm-3"
+                }
+            ]
+        }
+    ]
+}
