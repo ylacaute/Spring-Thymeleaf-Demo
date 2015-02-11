@@ -10,7 +10,7 @@ var DashboardController = (function () {
 	
 	var MODE = { VIEW : false, EDIT : true };
 	var URLS = {
-			config : "/dashboard/config"
+			config : "/dashboard/config/"
 	};
 	var SORTABLE_DOM = {
 			line : '<div class="row sortable-row"></div>',
@@ -18,7 +18,7 @@ var DashboardController = (function () {
 			container : '<div class="droptrue sortable-container"></div>',
 	};
 	
-	var currentMode = MODE.VIEW;
+	var currentMode;
 	var firstContainerClass = "sortable-first-container";
 	
 	function setMode(mode) {
@@ -54,7 +54,6 @@ var DashboardController = (function () {
 		$(".sortable-section").empty();
 		for (var i = 0; i < dashboardConfig.lines.length; i++) {
 			var currentLine = dashboardConfig.lines[i];
-			console.log("Building line [" + i + "] with " + currentLine.containers.length + " containers.");
 			addLine(currentLine.containers, i);
 		}
 	};
@@ -62,9 +61,9 @@ var DashboardController = (function () {
 	function loadConfiguration(configId) {
 		var config;
 		var request = $.ajax({
-			type: "POST",
+			type: "GET",
 			dataType: "json",
-			url: Constants.CONTEXT_PATH + URLS.config + "/" + configId,
+			url: Constants.CONTEXT_PATH + URLS.config + configId,
 			cache: false
 		});
 		request.done(function(responseText, textStatus, xhr) {
@@ -92,9 +91,9 @@ var DashboardController = (function () {
 	    	console.log("Dashboard page ready.");
 			$("#editSortableBtn").click(function() { setMode(MODE.EDIT) });
 			$("#viewSortableBtn").click(function() { setMode(MODE.VIEW) });
-			setMode(MODE.VIEW);
 			$("#layout1Btn").click(function() { loadConfiguration(1); });
 			$("#layout2Btn").click(function() { loadConfiguration(2); });
+			setMode(MODE.VIEW);
 			loadConfiguration(1);
 		},
 		
@@ -108,8 +107,6 @@ var DashboardController = (function () {
 			    }
 			});
 		}
-		
-		
 		
 	}
 	

@@ -29,7 +29,7 @@ public class DashboardController extends BasePageController {
 	
 	@RequestMapping(value = RequestMappingConstants.GET_DASHBOARD_PAGE, method = RequestMethod.GET)
 	public String getAccountPage(Model model) {
-		LOG.info("Display the account page");
+		LOG.info("Display the dashboard page");
 		return RequestMappingConstants.DASHBOARD_PAGE;
 	}
 
