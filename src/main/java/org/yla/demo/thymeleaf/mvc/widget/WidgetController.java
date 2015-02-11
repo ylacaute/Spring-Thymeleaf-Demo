@@ -1,5 +1,6 @@
 package org.yla.demo.thymeleaf.mvc.widget;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -21,12 +22,15 @@ import org.yla.lib.skeleton.mvc.BaseController;
 public class WidgetController extends BaseController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WidgetController.class);
+	private HashMap<String, String> widgetFragmentMapping = new HashMap<String, String> ();
 	
 	private WidgetService widgetService;
 	
 	@Autowired
 	public WidgetController(WidgetService widgetService) {
-		this.widgetService = widgetService;		
+		this.widgetService = widgetService;
+		widgetFragmentMapping.put("1", "helloWorldWidget");
+		widgetFragmentMapping.put("2", "textWidget");
 	}
 	
 	// Will Change

@@ -7,6 +7,7 @@
 	<group name="common">
 		<js>/webjars/jquery/2.1.3/jquery.min.js</js>
 		<js>/webjars/bootstrap/3.3.2/js/bootstrap.min.js</js>
+		<js>/webjars/jquery-ui/1.11.2/jquery-ui.min.js</js>
 		<js>/assets/js/Constants.js</js>
 		<js>/assets/js/page/core/BasePage.js</js>
 		<js>/assets/js/util/Timer.js</js>
@@ -14,6 +15,7 @@
 		<js>/assets/js/util/FormValidator.js</js>
 		<js>/assets/js/page/PageController.js</js>
 		<js>/assets/js/page/HomeController.js</js>
+		<js>/assets/js/page/DashboardController.js</js>
 		<js>/assets/js/page/AccountController.js</js>
 		<js>/assets/js/page/demo/LayoutController.js</js>
 		<js>/assets/js/page/demo/FormController.js</js>
@@ -22,6 +24,8 @@
 		<css>/assets/css/layout/site/default.css</css>
 		<css>/assets/css/layout/page/default.css</css>
 		<css>/assets/css/theme/default.css</css>
+		<css>/assets/css/component/sortable.css</css>
+		<css>/assets/css/style.css</css>
 	</group>
 
 </groups>

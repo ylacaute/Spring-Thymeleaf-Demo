@@ -34,6 +34,11 @@ footer {
 } 
 /* !FIXED FOOTER ON BOT */
 
+/* Reset bootstrap panel margin */
+.panel {
+	margin:0px;
+}
+
 /* Ajust logo position in top menu*/
 #logo {
 	margin-top: -9px;

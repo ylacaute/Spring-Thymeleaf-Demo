@@ -7,11 +7,11 @@
 var FormValidator = (function () {
 	"use strict";
 	
-	// PRIVATE
+	// PRIVATE ------------------------------------------------------------------------------------
 
 	return {
 		
-		// PUBLIC
+		// PUBLIC ---------------------------------------------------------------------------------
 		
 		resetValidation : function(input) {
 			input.setCustomValidity("");

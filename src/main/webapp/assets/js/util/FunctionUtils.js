@@ -1,4 +1,3 @@
-
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 // FUNCTON UTILS
@@ -7,12 +6,11 @@
 var FunctionUtils = (function () {
 	"use strict";
 	
-	// PRIVATE
-	
+	// PRIVATE ------------------------------------------------------------------------------------
 	
 	return {
 
-		// PUBLIC
+		// PUBLIC ---------------------------------------------------------------------------------
 		
 		// Get function from string, with or without scopes
 		getFromString : function(functionName) {
@@ -27,10 +25,10 @@ var FunctionUtils = (function () {
 		},
 		
 		// Call function from string, with or without scopes
-		callFromString : function(functionName) {
+		callFromString : function(functionName, functionArgs) {
 			var fn = this.getFromString(functionName);
 			if (fn != null && typeof fn === 'function') {
-			    fn();
+			    fn(functionArgs);
 			}
 		}
 		

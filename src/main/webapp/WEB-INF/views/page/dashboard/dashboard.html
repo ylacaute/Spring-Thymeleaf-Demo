@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/layout/page/page-a4"
+	th:with="pageTitle='Dashboard', pageSubTitle='JQuery UI Sortable Demo', 
+	onLoad='DashboardController.onLoad();', 
+	onReady='DashboardController.onReady();'">
+<body>
+
+	<div layout:fragment="page-content">
+	  	<div class="row">
+			<div class="col-sm-12">
+				<div class="btn-group" data-toggle="buttons">
+					<label id="viewSortableBtn" class="btn btn-primary active">
+				    	<input type="radio" name="options" autocomplete="off" checked="checked"></input>View
+				  	</label>
+				  	<label id="editSortableBtn" class="btn btn-primary">
+					    <input type="radio" name="options" autocomplete="off"></input>Edit
+				  	</label>
+				</div>
+				<button id="addHelloWidget" class="btn btn-default"
+					th:onClick="'javascript:DashboardController.addWidget(\'1\')'">Add HelloWorld widget</button>
+			</div>
+		</div>
+	  	<div class="row">
+			<div class="col-sm-12">
+				<div class="btn-group" data-toggle="buttons" style="float: right;">
+				  <label id="col3layout" class="btn btn-primary active">
+				    <input type="radio" name="options"  autocomplete="off" checked="checked"></input>3 colonnes
+				  </label>
+				  <label id="col4layout" class="btn btn-primary">
+				    <input type="radio" name="options" autocomplete="off"></input>4 colonnes
+				  </label>
+				</div>
+			</div>
+		</div>
+		<div class="sortable-section">
+		  	<div id="sortable-by-col" class="row">
+				<div class="col-sm-4 sortable-column">
+					<div id="sortable1" class="droptrue sortable-container sortable-first-container">
+					</div>
+				</div>
+				<div class="col-sm-4 sortable-column">
+					<div id="sortable2" class="droptrue sortable-container">
+					</div>
+				</div>
+				<div class="col-sm-4 sortable-column">
+					<div id="sortable3" class="droptrue sortable-container">
+					</div>
+				</div>
+				<div class="col-sm-4 sortable-column" style="display: none;">
+					<div id="sortable4" class="droptrue sortable-container">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+	  			<div class="col-sm-12 sortable-column">
+					<div id="sortable5" class="droptrue sortable-container">
+					</div>
+				</div>
+			</div>
+	  	</div>
+	</div>
+	
+</body>
+</html>

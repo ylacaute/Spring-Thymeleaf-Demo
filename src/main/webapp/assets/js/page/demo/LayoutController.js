@@ -1,4 +1,3 @@
-
 // ------------------------------------------------------------------------------------------------
 // ------------------------------------------------------------------------------------------------
 // LAYOUT CONTROLLER
@@ -7,35 +6,28 @@
 var LayoutController = (function () {
 	"use strict";
 	
-	// PRIVATE
+	// PRIVATE ------------------------------------------------------------------------------------
 	
 	var URL = {
-		modal : "/modal/",
-		widget : "/widget/"
+		modal : "/modal/"
 	};
 
 	var modalReceiverId = "modalReceiver";
 	
-	
-	
-	
-	
 	return {
 		
-		// PUBLIC
+		// PUBLIC ---------------------------------------------------------------------------------
 		
 		onLoad : function() {
-			// Do anything here which required the full page load
 	    	console.log("Demos Layout page fully loaded.");
 		},
 		
 		onReady : function() {
-	    	// Do load stuff here (page not fully loaded)
 	    	console.log("Demos Layout page ready.");
 		},
 		
 		loadWidget : function(domReceiverId, widgetId) {
-			var url = Constants.CONTEXT_PATH + URL.widget + widgetId;
+			var url = Constants.CONTEXT_PATH + Constants.WIDGET_FRAG_URL + widgetId;
 			console.log("Url : " + url);
 			$("#" + domReceiverId).load(url);
 		},

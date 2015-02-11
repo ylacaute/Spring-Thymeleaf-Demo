@@ -2,6 +2,7 @@
 
 For now, this project is personal. The main goal is to show how Thymeleaf can be powerful and easy to work with :)
 
+In progress : build a powerful dashboard like iGoole (JQuery sortable) with Thymeleaf fragments 
 
 ## Install
 * Download the zipfile from the [this page](https://github.com/ylacaute/SpringThymeleafDemo) 
@@ -16,22 +17,29 @@ For now, this project is personal. The main goal is to show how Thymeleaf can be
 ### Common web technologies
 * HTML 5
 * Bootstrap 3
-* Jquery
-* Web Resource Optimization  
-* JS Oriented Object
+* JQuery, JQuery
+* Web Resource Optimization
+* Module oriented JS
+* Oriented Object JS (coming soon)
 
 ### Thymeleaf integration 
 * Advanced Layout (site, page, component)
-* HTML5 form validation (custom messages, i18n, ajax option)
+* HTML5 form validation (custom messages, I18N, AJAX option)
 * Spring Security integration (coming soon)
-* Internationalization 
+* I18N
 * Mobile compliant
+
+### Configurable widget system 
+* Widget Dashboard (iGoogle like)
+* Layout customization
+* User preferences (coming soon)
 
 ### RESTful architecture
 * Coming soon
 
 
 ## TODO
+* Continue the widget dashboard system
 * Change input validation message on hover (currently, defined by the broswer)
 * Put all text in i18n messages
 * Add a service which define all available langages

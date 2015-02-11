@@ -12,5 +12,5 @@ public class PageModelConstants {
 	public static final String ACCOUNT = "account";
 	public static final String DEMO_LAYOUT = "layout";
 	public static final String DEMO_FORM = "form";
-	
+	public static final String DASHBOARD = "dashboard";
 }
