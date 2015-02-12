@@ -19,6 +19,7 @@
 					<li>Dynamic load of any Thymeleaf fragment, let's call them widgets</li>
 					<li>Configuration management : a simple JSON file retrieved in AJAX</li>
 					<li>Dynamic configuration loading</li>
+					<li>Non intrusive : no constraint on widget (id, class...)</li>
 				</ul>
 				<br/>
 			</div>
@@ -33,8 +34,12 @@
 					    <input type="radio" name="options" autocomplete="off"></input>Edit
 				  	</label>
 				</div>
-				<button id="addHelloWidget" class="btn btn-default"
-					th:onClick="'javascript:DashboardController.addWidget(\'1\')'">Add HelloWorld widget</button>
+				<button class="btn btn-default"
+					th:onClick="'javascript:DashboardController.importWidget(\'1\')'">Add HelloWorld widget</button>
+				<button class="btn btn-default"
+					th:onClick="'javascript:DashboardController.importWidget(\'2\')'">Add Text widget</button>
+				<button class="btn btn-default"
+					onClick="DashboardController.logTree();">Log configuration</button>
 				<div style="float: right;">
 					<div class="btn-group" data-toggle="buttons" style="float: right;">
 					  <label id="layout1Btn" class="btn btn-primary active">

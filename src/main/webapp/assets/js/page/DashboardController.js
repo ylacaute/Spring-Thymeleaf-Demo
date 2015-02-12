@@ -16,8 +16,11 @@ var DashboardController = (function () {
 			line : '<div class="row sortable-row"></div>',
 			containerWrapper : '<div class="sortable-container-wrapper"></div>',
 			container : '<div class="droptrue sortable-container"></div>',
+			closeBtn : '<button class="close sortable-close" aria-label="Close" type="button"><span aria-hidden="true">×</span></button>',
+			widgetWrapper : '<div class="widget-wrapper"></div>'
 	};
 	
+	var widgetCounter = 0;
 	var currentMode;
 	var firstContainerClass = "sortable-first-container";
 	
@@ -33,15 +36,26 @@ var DashboardController = (function () {
 		}
 	};
 	
+	function addWidget(widgetHtml, widgetUri) {
+		var $widgetWrapper = $(SORTABLE_DOM.widgetWrapper);
+		var $widgetWrapperCloseBtn = $(SORTABLE_DOM.closeBtn);
+		$widgetWrapper.append($widgetWrapperCloseBtn);
+		$widgetWrapper.append(widgetHtml);
+		$widgetWrapper.data("widgetUri", widgetUri);
+		$("." + firstContainerClass).append($widgetWrapper);
+		$widgetWrapperCloseBtn.click(function(event) { 
+			$(this).parent().remove();
+		});
+	};
+	
 	function addLine(containers, lineIndex) {
 		var $line = $(SORTABLE_DOM.line);
 		for (var i = 0; i < containers.length; i++) {
-			console.log(" - building container [" + i + "]");
 			var $container = $(SORTABLE_DOM.container);
+			var $containerWrapper = $(SORTABLE_DOM.containerWrapper);
 			if (lineIndex == 0 && i == 0) {
 				$container.addClass(firstContainerClass);
 			}
-			var $containerWrapper = $(SORTABLE_DOM.containerWrapper);
 			$containerWrapper.addClass(containers[i].cssClass);
 			$containerWrapper.append($container);
 			$line.append($containerWrapper);
@@ -51,7 +65,6 @@ var DashboardController = (function () {
 
 	function buildConfiguration(dashboardConfig) {
 		console.log("Loading dashboard configuration (nbLines=" + dashboardConfig.nbLines + ")");
-		$(".sortable-section").empty();
 		for (var i = 0; i < dashboardConfig.lines.length; i++) {
 			var currentLine = dashboardConfig.lines[i];
 			addLine(currentLine.containers, i);
@@ -67,6 +80,7 @@ var DashboardController = (function () {
 			cache: false
 		});
 		request.done(function(responseText, textStatus, xhr) {
+			clearDashboard();
 			buildConfiguration(responseText);
 			initConfiguration();
 		});
@@ -79,6 +93,10 @@ var DashboardController = (function () {
 		});
 	}
 
+	function clearDashboard() {
+		$(".sortable-section").empty();
+	}
+	
 	return {
 
 		// PUBLIC ---------------------------------------------------------------------------------
@@ -97,17 +115,40 @@ var DashboardController = (function () {
 			loadConfiguration(1);
 		},
 		
-		addWidget : function(widgetId) {
-			var url = Constants.CONTEXT_PATH + Constants.WIDGET_FRAG_URL + widgetId;
+		importWidget : function(widgetId) {
+			var widgetUri = Constants.WIDGET_FRAG_URL + widgetId;
+			var url = Constants.CONTEXT_PATH + widgetUri;
 			$.ajax({
 				type: "GET",
 				url: url,
 			    success: function (responseText, textStatus, xhr) {
-			    	$("." + firstContainerClass).append(responseText);
+			    	addWidget(responseText, widgetUri);
 			    }
 			});
-		}
+		},
 		
+		logTree : function(lineIndex, colIndex) {
+			var $lines = $(".sortable-section").children();
+			for (var i = 0; i < $lines.length; i++) {
+				console.log("LINE " + i);
+				var $line = $lines.eq(i);
+				var $containerWrappers = $line.children();
+				for (var j = 0; j < $containerWrappers.length; j++) {
+					console.log("  CONTAINER WRAPPER " + j);
+					var $containerWrapper = $containerWrappers.eq(j);
+					for (var k = 0; k < $containerWrapper.length; k++) {
+						console.log("    CONTAINER " + k);
+						var $container = $containerWrapper.find(".sortable-container");
+						var $widgetWrappers = $container.children();
+						for (var w = 0; w < $widgetWrappers.length; w++) {
+							console.log("      WIDGET WRAPPER " + w);
+							var $widgetWrapper = $widgetWrappers.eq(w);
+							console.log("        Widget : " + $widgetWrapper.data("widgetUri"));
+						}
+					}
+				}
+			}
+		}
 	}
 	
 })();

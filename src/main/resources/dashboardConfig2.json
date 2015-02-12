@@ -4,6 +4,11 @@
             "containers": [
                 {
                     "cssClass": "col-sm-12"
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	},
+                    ]
                 }
             ]
         },
