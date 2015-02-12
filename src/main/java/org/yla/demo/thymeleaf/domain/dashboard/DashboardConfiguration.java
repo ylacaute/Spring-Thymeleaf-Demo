@@ -45,6 +45,8 @@ class DashboardLineContainer {
 	
 	private String cssClass;
 
+	private List<DashboardWidget> widgets;
+	
 	public String getCssClass() {
 		return cssClass;
 	}
@@ -52,5 +54,31 @@ class DashboardLineContainer {
 	public void setCssClass(String cssClass) {
 		this.cssClass = cssClass;
 	}
+
+	public List<DashboardWidget> getWidgets() {
+		return widgets;
+	}
+
+	public void setWidgets(List<DashboardWidget> widgets) {
+		this.widgets = widgets;
+	}
 	
 }
+
+
+class DashboardWidget {
+	
+	private String fragmentUri;
+
+	public String getFragmentUri() {
+		return fragmentUri;
+	}
+
+	public void setFragmentUri(String fragmentUri) {
+		this.fragmentUri = fragmentUri;
+	}
+	
+}
+
+
+

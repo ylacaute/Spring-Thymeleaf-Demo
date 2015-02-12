@@ -1,0 +1,39 @@
+{
+    "lines": [
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-12",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	}
+                    ]
+                }
+            ]
+        },
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-6",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	},
+                    	{
+                    		"fragmentUri" : "/widget/2"
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-4",
+                    "widgets" : [ ]
+                },
+                {
+                    "cssClass": "col-sm-2",
+                    "widgets" : [ ]
+                }
+            ]
+        }
+    ]
+}

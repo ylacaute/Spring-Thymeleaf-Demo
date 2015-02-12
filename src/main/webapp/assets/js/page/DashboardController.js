@@ -36,28 +36,48 @@ var DashboardController = (function () {
 		}
 	};
 	
-	function addWidget(widgetHtml, widgetUri) {
+	function loadWidget(widgetUri, $container) {
+		var url = Constants.CONTEXT_PATH + widgetUri;
+		$.ajax({
+			type: "GET",
+			url: url,
+		    success: function(responseText, textStatus, xhr) {
+		    	$container.append(createWidgetWrapper(responseText, widgetUri));
+		    },
+		    fail: function() {
+		    	console.log("WARN : the widget '" + widgetUri + "' has not been loaded.");
+		    }
+		});
+	};
+	
+	function createWidgetWrapper(widgetHtml, widgetUri) {
 		var $widgetWrapper = $(SORTABLE_DOM.widgetWrapper);
 		var $widgetWrapperCloseBtn = $(SORTABLE_DOM.closeBtn);
 		$widgetWrapper.append($widgetWrapperCloseBtn);
 		$widgetWrapper.append(widgetHtml);
 		$widgetWrapper.data("widgetUri", widgetUri);
-		$("." + firstContainerClass).append($widgetWrapper);
-		$widgetWrapperCloseBtn.click(function(event) { 
+		$widgetWrapperCloseBtn.click(function(event) {
 			$(this).parent().remove();
 		});
+		return $widgetWrapper;
 	};
 	
 	function addLine(containers, lineIndex) {
 		var $line = $(SORTABLE_DOM.line);
 		for (var i = 0; i < containers.length; i++) {
-			var $container = $(SORTABLE_DOM.container);
 			var $containerWrapper = $(SORTABLE_DOM.containerWrapper);
+			var $container = $(SORTABLE_DOM.container);
 			if (lineIndex == 0 && i == 0) {
 				$container.addClass(firstContainerClass);
 			}
-			$containerWrapper.addClass(containers[i].cssClass);
 			$containerWrapper.append($container);
+			$containerWrapper.addClass(containers[i].cssClass);
+			var widgets = containers[i].widgets;
+			if (widgets != null) {
+				for (var j = 0; j < widgets.length; j++) {
+					loadWidget(widgets[j].fragmentUri, $container);
+				}
+			}
 			$line.append($containerWrapper);
 		}
 		$(".sortable-section").append($line);
@@ -80,7 +100,7 @@ var DashboardController = (function () {
 			cache: false
 		});
 		request.done(function(responseText, textStatus, xhr) {
-			clearDashboard();
+			clearLayout();
 			buildConfiguration(responseText);
 			initConfiguration();
 		});
@@ -91,11 +111,19 @@ var DashboardController = (function () {
 			connectWith: ".sortable-container",
 			cancel: ".sortable-view-mode .sortable-container"
 		});
-	}
+	};
+	
+	function saveConfiguration() {
+		alert("TODO :)");
+	};
 
-	function clearDashboard() {
+	function clearLayout() {
 		$(".sortable-section").empty();
-	}
+	};
+	
+	function clearWidgets() {
+		$(".sortable-container").empty();
+	};
 	
 	return {
 
@@ -107,24 +135,25 @@ var DashboardController = (function () {
 		
 		onReady : function() {
 	    	console.log("Dashboard page ready.");
-			$("#editSortableBtn").click(function() { setMode(MODE.EDIT) });
-			$("#viewSortableBtn").click(function() { setMode(MODE.VIEW) });
+			$("#editSortableBtn").click(function() { setMode(MODE.EDIT); });
+			$("#viewSortableBtn").click(function() { setMode(MODE.VIEW); });
+			$("#saveBtn").click(function() { saveConfiguration(); });
+			$("#clearBtn").click(function() { clearWidgets(); });
+			
 			$("#layout1Btn").click(function() { loadConfiguration(1); });
 			$("#layout2Btn").click(function() { loadConfiguration(2); });
+
+			$("#config1Btn").click(function() { loadConfiguration(10); });
+			$("#config2Btn").click(function() { loadConfiguration(11); });
+			
+			$("button").click(function() { $(this).blur(); });
+			
 			setMode(MODE.VIEW);
 			loadConfiguration(1);
 		},
 		
-		importWidget : function(widgetId) {
-			var widgetUri = Constants.WIDGET_FRAG_URL + widgetId;
-			var url = Constants.CONTEXT_PATH + widgetUri;
-			$.ajax({
-				type: "GET",
-				url: url,
-			    success: function (responseText, textStatus, xhr) {
-			    	addWidget(responseText, widgetUri);
-			    }
-			});
+		addWidget : function(widgetUri) {
+			loadWidget(widgetUri, $("." + firstContainerClass));
 		},
 		
 		logTree : function(lineIndex, colIndex) {

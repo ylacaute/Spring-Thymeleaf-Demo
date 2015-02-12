@@ -14,8 +14,6 @@ import org.yla.demo.thymeleaf.mvc.PageModelConstants;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
 import org.yla.lib.skeleton.mvc.BasePageController;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -34,16 +32,25 @@ public class DashboardController extends BasePageController {
 	}
 
 	@RequestMapping(value = RequestMappingConstants.DASHBORD_CONFIG)
-	public @ResponseBody DashboardConfiguration getDashBoardConfigPage(Model model, @PathVariable int configId) throws Exception {
+	public @ResponseBody DashboardConfiguration getDashBoardLayoutConfig(Model model, @PathVariable int configId) throws Exception {
 		ClassPathResource rsc;
-		if (configId == 2) {
-			rsc = new ClassPathResource("dashboardConfig2.json");
-		} else {
-			rsc = new ClassPathResource("defaultDashboardConfig.json");
+		switch (configId) {
+		case 1: 
+			rsc = new ClassPathResource("dashboard/layoutConfig1.json");
+			break;
+		case 2: 
+			rsc = new ClassPathResource("dashboard/layoutConfig2.json");
+			break;
+		case 10: 
+			rsc = new ClassPathResource("dashboard/userConfig1.json");
+			break;
+		default:
+			rsc = new ClassPathResource("dashboard/userConfig2.json");
+			break;
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		DashboardConfiguration config = mapper.readValue(rsc.getFile(), DashboardConfiguration.class);
-		LOG.info("Loading dashbord configuration id={} : {}", configId, config);
+		LOG.info("Loading dashbord layout configuration id={} : {}", configId, config);
 		return config;
 	}
 	

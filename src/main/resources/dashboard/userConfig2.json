@@ -1,0 +1,77 @@
+{
+    "lines": [
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/2"
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/2"
+                    	}
+                    ]
+                }
+            ]
+        },
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets" : [
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	},
+                    	{
+                    		"fragmentUri" : "/widget/2"
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-6",
+                    "widgets" : [ 
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	},
+                    	{
+                    		"fragmentUri" : "/widget/2"
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets" : [ 
+                    	{
+                    		"fragmentUri" : "/widget/1"
+                    	},
+                    	{
+                    		"fragmentUri" : "/widget/2"
+                    	}
+                    ]
+                }
+            ]
+        }
+    ]
+}
