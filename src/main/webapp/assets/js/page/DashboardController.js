@@ -29,10 +29,12 @@ var DashboardController = (function () {
 			$(".sortable-section").removeClass("sortable-edit-mode");
 			$(".sortable-section").addClass("sortable-view-mode");
 			$(".sortable-container").enableSelection();
+			$(".sortable-toolbar").hide();
 		} else {
 			$(".sortable-section").removeClass("sortable-view-mode");
 			$(".sortable-section").addClass("sortable-edit-mode");
 			$(".sortable-container").disableSelection();
+			$(".sortable-toolbar").show();
 		}
 	};
 	
