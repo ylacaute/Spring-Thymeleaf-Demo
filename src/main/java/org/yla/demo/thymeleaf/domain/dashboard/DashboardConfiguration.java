@@ -68,15 +68,25 @@ class DashboardLineContainer {
 
 class DashboardWidget {
 	
-	private String fragmentUri;
+	private String fragmentUrl;
+	private String fragmentConfigurerUrl;
 
-	public String getFragmentUri() {
-		return fragmentUri;
+	public String getFragmentUrl() {
+		return fragmentUrl;
 	}
 
-	public void setFragmentUri(String fragmentUri) {
-		this.fragmentUri = fragmentUri;
+	public void setFragmentUrl(String fragmentUrl) {
+		this.fragmentUrl = fragmentUrl;
 	}
+
+	public String getFragmentConfigurerUrl() {
+		return fragmentConfigurerUrl;
+	}
+
+	public void setFragmentConfigurerUrl(String fragmentConfigurerUrl) {
+		this.fragmentConfigurerUrl = fragmentConfigurerUrl;
+	}
+	
 	
 }
 

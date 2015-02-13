@@ -35,3 +35,7 @@ footer {
     content: "{";
 }
 /* !PAGE SUBTITLE */
+
+.circle {
+	radius: 50;	
+}

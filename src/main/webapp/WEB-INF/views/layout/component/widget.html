@@ -4,14 +4,6 @@
 	xmlns:th="http://www.thymeleaf.org" 
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
-	<!--
-		Sample use case, from anywhere :
-	 
-		<div layout:include="/layout/component/widget :: widget" th:with="panelTitle='Home Panel'" th:remove="tag">
-			<p layout:fragment="widget-body">SAMPLE CONTENT INCLUDED IN PANEL BODY</p>
-		</div>
-	 -->
-
 	<div layout:fragment="widget">
 		<div class="panel panel-default">
 	  		<div class="panel-heading" th:text="${widgetTitle}">

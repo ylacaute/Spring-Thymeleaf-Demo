@@ -8,11 +8,12 @@ var DashboardController = (function () {
 
 	// PRIVATE ------------------------------------------------------------------------------------
 	
-	var MODE = { VIEW : false, EDIT : true };
+	var MODE = { VIEW : "view", EDIT : "edit", FLY : "fly" };
 	var URLS = {
 			config : "/dashboard/config/"
 	};
 	var SORTABLE_DOM = {
+			sortable : "div.droptrue",
 			line : '<div class="row sortable-row"></div>',
 			containerWrapper : '<div class="sortable-container-wrapper"></div>',
 			container : '<div class="droptrue sortable-container"></div>',
@@ -25,17 +26,33 @@ var DashboardController = (function () {
 	var firstContainerClass = "sortable-first-container";
 	
 	function setMode(mode) {
-		if (mode == MODE.VIEW) {
+		switch(mode) {
+		case MODE.VIEW:
 			$(".sortable-section").removeClass("sortable-edit-mode");
+			$(".sortable-section").removeClass("sortable-fly-mode");
 			$(".sortable-section").addClass("sortable-view-mode");
 			$(".sortable-container").enableSelection();
 			$(".sortable-toolbar").hide();
-		} else {
+			$(".sortable-container").sortable("disable");
+			break;
+		case MODE.EDIT:
 			$(".sortable-section").removeClass("sortable-view-mode");
+			$(".sortable-section").removeClass("sortable-fly-mode");
 			$(".sortable-section").addClass("sortable-edit-mode");
 			$(".sortable-container").disableSelection();
 			$(".sortable-toolbar").show();
+			$(".sortable-container").sortable("enable");
+			break;
+		case MODE.FLY:
+			$(".sortable-section").removeClass("sortable-edit-mode");
+			$(".sortable-section").removeClass("sortable-view-mode");
+			$(".sortable-section").addClass("sortable-fly-mode");
+			$(".sortable-container").disableSelection();
+			$(".sortable-toolbar").show();
+			$(".sortable-container").sortable("enable");
+			break;
 		}
+		currentMode = mode;
 	};
 	
 	function generateConfiguration() {
@@ -61,7 +78,7 @@ var DashboardController = (function () {
 						var $widgetWrapper = $widgetWrappers.eq(w);
 						console.log(" Widget : " + $widgetWrapper.data("widgetUri"));
 						var widget = new Object();
-						widget.fragmentUri = $widgetWrapper.data("widgetUri");
+						widget.fragmentUrl = $widgetWrapper.data("widgetUri");
 						container.widgets.push(widget);
 					}
 				}
@@ -110,7 +127,7 @@ var DashboardController = (function () {
 			var widgets = containers[i].widgets;
 			if (widgets != null) {
 				for (var j = 0; j < widgets.length; j++) {
-					loadWidget(widgets[j].fragmentUri, $container);
+					loadWidget(widgets[j].fragmentUrl, $container);
 				}
 			}
 			$line.append($containerWrapper);
@@ -137,13 +154,17 @@ var DashboardController = (function () {
 			clearLayout();
 			buildConfiguration(responseText);
 			initConfiguration();
+			setMode(MODE.VIEW);
 		});
 	};
 	
 	function initConfiguration() {
-		$("div.droptrue").sortable({
+		$(SORTABLE_DOM.sortable).sortable({
 			connectWith: ".sortable-container",
-			cancel: ".sortable-view-mode .sortable-container"
+			cursor: "move",
+			update: onUpdate,
+			start: onDragStart,
+			stop: onDragStop
 		});
 	};
 	
@@ -169,6 +190,26 @@ var DashboardController = (function () {
 		$(".sortable-container").empty();
 	};
 	
+	function onDragStart(event, ui) {
+		switch(currentMode) {
+		case MODE.FLY:
+			$(".sortable-section").addClass("sortable-edit-mode");
+			break;
+		}
+	};
+
+	function onDragStop(event, ui) {
+		switch(currentMode) {
+		case MODE.FLY:
+			$(".sortable-section").removeClass("sortable-edit-mode");
+			break;
+		}
+	};
+	
+	function onUpdate(event, ui) {
+		
+	};
+	
 	return {
 
 		// PUBLIC ---------------------------------------------------------------------------------
@@ -179,8 +220,10 @@ var DashboardController = (function () {
 		
 		onReady : function() {
 	    	console.log("Dashboard page ready.");
-			$("#editSortableBtn").click(function() { setMode(MODE.EDIT); });
-			$("#viewSortableBtn").click(function() { setMode(MODE.VIEW); });
+			$("#editModeBtn").click(function() { setMode(MODE.EDIT); });
+			$("#viewModeBtn").click(function() { setMode(MODE.VIEW); });
+			$("#flyModeBtn").click(function() { setMode(MODE.FLY); });
+			
 			$("#saveBtn").click(function() { saveConfiguration(); });
 			$("#clearBtn").click(function() { clearWidgets(); });
 			
@@ -193,7 +236,6 @@ var DashboardController = (function () {
 			
 			$("button").click(function() { $(this).blur(); });
 			
-			setMode(MODE.VIEW);
 			loadConfiguration(-1);
 		},
 		

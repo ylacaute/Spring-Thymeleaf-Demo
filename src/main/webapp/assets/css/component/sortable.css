@@ -13,9 +13,14 @@
 	border: 2px dashed #d1d1d1;
 	background: #F1F1F1;
 }
-.sortable-section.sortable-view-mode .sortable-close {
+.sortable-section.sortable-view-mode .sortable-close,
+.sortable-section.sortable-fly-mode .sortable-close {
 	display: none;
 }
+.sortable-section.sortable-fly-mode .widget-wrapper:hover .sortable-close {
+	display: block;
+}
+
 .sortable-container > div {
 	margin-bottom: 5px;
 	background: #FFF;

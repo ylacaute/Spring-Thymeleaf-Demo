@@ -16,9 +16,10 @@
 				<p>Let's play with this beautiful dashboard ! </p>
 				<ul>
 					<li>Mode management : View or Edit</li>
+					<li>Non intrusive : no constraint on widget (type, id, class...)</li>
+					<li>Mobile compliant (use bootstrap for layout configuration)</li>
 					<li>Dynamic load of any Thymeleaf fragment, let's call them widgets</li>
 					<li>Dynamic configuration management : a simple JSON file retrieved in AJAX</li>
-					<li>Non intrusive : no constraint on widget (type, id, class...)</li>
 				</ul>
 				<br/>
 			</div>
@@ -26,11 +27,14 @@
 		<div class="row">
 			<div class="col-sm-12" style="margin-bottom: 10px;">
 				<div class="btn-group" data-toggle="buttons">
-					<label id="viewSortableBtn" class="btn btn-primary active">
-				    	<input type="radio" name="options" autocomplete="off" checked="checked"></input>View
+					<label id="viewModeBtn" class="btn btn-primary active">
+				    	<input type="radio" name="options" autocomplete="off"></input>View
 				  	</label>
-				  	<label id="editSortableBtn" class="btn btn-primary">
+				  	<label id="editModeBtn" class="btn btn-primary">
 					    <input type="radio" name="options" autocomplete="off"></input>Edit
+				  	</label>
+				  	<label id="flyModeBtn" class="btn btn-primary">
+					    <input type="radio" name="options" autocomplete="off"></input>Fly
 				  	</label>
 				</div>
 				<button id="config1Btn" type="button" class="btn btn-info">Config 1</button>

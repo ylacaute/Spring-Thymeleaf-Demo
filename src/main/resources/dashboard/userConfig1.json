@@ -6,7 +6,7 @@
                     "cssClass": "col-sm-12",
                     "widgets" : [
                     	{
-                    		"fragmentUri" : "/widget/1"
+                    		"fragmentUrl" : "/widget/1"
                     	}
                     ]
                 }
@@ -18,10 +18,10 @@
                     "cssClass": "col-sm-6",
                     "widgets" : [
                     	{
-                    		"fragmentUri" : "/widget/1"
+                    		"fragmentUrl" : "/widget/1"
                     	},
                     	{
-                    		"fragmentUri" : "/widget/2"
+                    		"fragmentUrl" : "/widget/2"
                     	}
                     ]
                 },
