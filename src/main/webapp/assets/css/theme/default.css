@@ -18,6 +18,9 @@ footer {
 	color: #FFF;
 	background-color: #112233;
 }
+.panel-default > .panel-heading {
+	font-weight: bold;
+}
 
 /* PAGE SUBTITLE */
 .page-sub-title {

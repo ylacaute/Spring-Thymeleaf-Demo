@@ -38,6 +38,38 @@ var DashboardController = (function () {
 		}
 	};
 	
+	function generateConfiguration() {
+		var config = new Object();
+		config.lines = [];
+		var $lines = $(".sortable-section").children();
+		for (var i = 0; i < $lines.length; i++) {
+			var $line = $lines.eq(i);
+			var $containerWrappers = $line.children();
+			var line = new Object();
+			config.lines.push(line);
+			line.containers = [];
+			for (var j = 0; j < $containerWrappers.length; j++) {
+				var $containerWrapper = $containerWrappers.eq(j);
+				for (var k = 0; k < $containerWrapper.length; k++) {
+					var $container = $containerWrapper.find(".sortable-container");
+					var $widgetWrappers = $container.children();
+					var container = new Object();
+					container.cssClass = $containerWrapper.data("cssClass");
+					container.widgets = [];
+					line.containers.push(container);
+					for (var w = 0; w < $widgetWrappers.length; w++) {
+						var $widgetWrapper = $widgetWrappers.eq(w);
+						console.log(" Widget : " + $widgetWrapper.data("widgetUri"));
+						var widget = new Object();
+						widget.fragmentUri = $widgetWrapper.data("widgetUri");
+						container.widgets.push(widget);
+					}
+				}
+			}
+		}
+		return config;
+	};
+	
 	function loadWidget(widgetUri, $container) {
 		var url = Constants.CONTEXT_PATH + widgetUri;
 		$.ajax({
@@ -74,6 +106,7 @@ var DashboardController = (function () {
 			}
 			$containerWrapper.append($container);
 			$containerWrapper.addClass(containers[i].cssClass);
+			$containerWrapper.data("cssClass", containers[i].cssClass);
 			var widgets = containers[i].widgets;
 			if (widgets != null) {
 				for (var j = 0; j < widgets.length; j++) {
@@ -86,7 +119,6 @@ var DashboardController = (function () {
 	};
 
 	function buildConfiguration(dashboardConfig) {
-		console.log("Loading dashboard configuration (nbLines=" + dashboardConfig.nbLines + ")");
 		for (var i = 0; i < dashboardConfig.lines.length; i++) {
 			var currentLine = dashboardConfig.lines[i];
 			addLine(currentLine.containers, i);
@@ -116,7 +148,17 @@ var DashboardController = (function () {
 	};
 	
 	function saveConfiguration() {
-		alert("TODO :)");
+		var jsonConfig = generateConfiguration();
+		var request = $.ajax({
+			type: "POST",
+			data: JSON.stringify(jsonConfig),
+			dataType: "json",
+			contentType: 'application/json; charset=utf-8',
+			url: Constants.CONTEXT_PATH + URLS.config + 3
+		});
+		request.done(function(responseText, textStatus, xhr) {
+			log.consoled("Configuration successfully saved.");
+		});
 	};
 
 	function clearLayout() {
@@ -147,38 +189,22 @@ var DashboardController = (function () {
 
 			$("#config1Btn").click(function() { loadConfiguration(10); });
 			$("#config2Btn").click(function() { loadConfiguration(11); });
+			$("#config3Btn").click(function() { loadConfiguration(12); });
 			
 			$("button").click(function() { $(this).blur(); });
 			
 			setMode(MODE.VIEW);
-			loadConfiguration(1);
+			loadConfiguration(-1);
 		},
 		
 		addWidget : function(widgetUri) {
 			loadWidget(widgetUri, $("." + firstContainerClass));
 		},
 		
-		logTree : function(lineIndex, colIndex) {
-			var $lines = $(".sortable-section").children();
-			for (var i = 0; i < $lines.length; i++) {
-				console.log("LINE " + i);
-				var $line = $lines.eq(i);
-				var $containerWrappers = $line.children();
-				for (var j = 0; j < $containerWrappers.length; j++) {
-					console.log("  CONTAINER WRAPPER " + j);
-					var $containerWrapper = $containerWrappers.eq(j);
-					for (var k = 0; k < $containerWrapper.length; k++) {
-						console.log("    CONTAINER " + k);
-						var $container = $containerWrapper.find(".sortable-container");
-						var $widgetWrappers = $container.children();
-						for (var w = 0; w < $widgetWrappers.length; w++) {
-							console.log("      WIDGET WRAPPER " + w);
-							var $widgetWrapper = $widgetWrappers.eq(w);
-							console.log("        Widget : " + $widgetWrapper.data("widgetUri"));
-						}
-					}
-				}
-			}
+		logTree : function() {
+			var jsonConfig = generateConfiguration();
+			var jsonAsString = JSON.stringify(jsonConfig);
+			console.log(jsonAsString);
 		}
 	}
 	

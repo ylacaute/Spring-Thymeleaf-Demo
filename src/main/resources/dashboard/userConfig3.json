@@ -1,0 +1,64 @@
+{
+    "lines": [
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-6",
+                    "widgets": [
+                        {
+                            "fragmentUri": "/widget/1"
+                        }
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-6",
+                    "widgets": []
+                }
+            ]
+        },
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets": []
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets": []
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets": []
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets": []
+                }
+            ]
+        },
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets": []
+                },
+                {
+                    "cssClass": "col-sm-6",
+                    "widgets": []
+                },
+                {
+                    "cssClass": "col-sm-3",
+                    "widgets": []
+                }
+            ]
+        },
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-12",
+                    "widgets": []
+                }
+            ]
+        }
+    ]
+}

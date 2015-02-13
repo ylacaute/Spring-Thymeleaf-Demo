@@ -1,17 +1,25 @@
 package org.yla.demo.thymeleaf.mvc.page;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.yla.demo.thymeleaf.domain.dashboard.DashboardConfiguration;
 import org.yla.demo.thymeleaf.mvc.PageModelConstants;
 import org.yla.demo.thymeleaf.mvc.RequestMappingConstants;
+import org.yla.demo.thymeleaf.mvc.Session;
 import org.yla.lib.skeleton.mvc.BasePageController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,38 +28,85 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class DashboardController extends BasePageController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DashboardController.class);
+
+	@Autowired
+	private Session session;
 	
 	public DashboardController() {
 		super(PageModelConstants.DASHBOARD);
 	}
 	
+	/**
+	 * Get the Dashboard page
+	 * 
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = RequestMappingConstants.GET_DASHBOARD_PAGE, method = RequestMethod.GET)
-	public String getAccountPage(Model model) {
+	public String getDashboardPage(Model model) {
 		LOG.info("Display the dashboard page");
 		return RequestMappingConstants.DASHBOARD_PAGE;
 	}
 
-	@RequestMapping(value = RequestMappingConstants.DASHBORD_CONFIG)
+	/**
+	 * Save the dashboard configuration in session.
+	 * 
+	 * @param model
+	 * @param config
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = RequestMappingConstants.DASHBORD_CONFIG, method = RequestMethod.POST)
+	public @ResponseBody String saveConfig(Model model, @RequestBody DashboardConfiguration config) throws Exception {
+		LOG.info("Saving dashboard configuration : {}", config);
+		session.setDashboardConfig(config);
+		return "";
+	}
+	
+	/**
+	 * Get a specific Dashboard config in JSON. If the configId is equal to -1, then the user
+	 * configuration will be loaded and it there is no user configuration yet, a default config
+	 * is used.
+	 * 
+	 * 
+	 * @param model
+	 * @param configId
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = RequestMappingConstants.DASHBORD_CONFIG, method = RequestMethod.GET)
 	public @ResponseBody DashboardConfiguration getDashBoardLayoutConfig(Model model, @PathVariable int configId) throws Exception {
-		ClassPathResource rsc;
-		switch (configId) {
-		case 1: 
-			rsc = new ClassPathResource("dashboard/layoutConfig1.json");
-			break;
-		case 2: 
-			rsc = new ClassPathResource("dashboard/layoutConfig2.json");
-			break;
-		case 10: 
-			rsc = new ClassPathResource("dashboard/userConfig1.json");
-			break;
-		default:
-			rsc = new ClassPathResource("dashboard/userConfig2.json");
-			break;
+		DashboardConfiguration config;
+		if (configId == -1) {
+			config = getDefaultConfig();
+		} else {
+			config = getConfigFromFile(configId);
 		}
-		ObjectMapper mapper = new ObjectMapper();
-		DashboardConfiguration config = mapper.readValue(rsc.getFile(), DashboardConfiguration.class);
 		LOG.info("Loading dashbord layout configuration id={} : {}", configId, config);
 		return config;
 	}
 	
+	
+	private DashboardConfiguration getDefaultConfig() throws Exception {
+		if (session.getDashboardConfig() != null) {
+			return session.getDashboardConfig();
+		} else {
+			return getConfigFromFile(1);
+		}
+	}
+	
+	private DashboardConfiguration getConfigFromFile(int configId) throws Exception {
+		ClassPathResource rsc;
+		switch (configId) {
+		case 1: rsc = new ClassPathResource("dashboard/layoutConfig1.json"); break;
+		case 2: rsc = new ClassPathResource("dashboard/layoutConfig2.json"); break;
+		case 10: rsc = new ClassPathResource("dashboard/userConfig1.json"); break;
+		default: rsc = new ClassPathResource("dashboard/userConfig2.json"); break;
+		}
+		ObjectMapper mapper = new ObjectMapper();
+		DashboardConfiguration config = mapper.readValue(rsc.getFile(), DashboardConfiguration.class);
+		return config;
+	}
+
+
 }
