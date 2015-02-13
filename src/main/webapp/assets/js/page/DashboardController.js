@@ -26,6 +26,13 @@ var DashboardController = (function () {
 	var currentMode;
 	var firstContainerClass = "sortable-first-container";
 	
+	function reloadMode() {
+		if (currentMode == null) {
+			currentMode = MODE.VIEW;
+		}
+		setMode(currentMode);
+	}
+	
 	function setMode(mode) {
 		switch(mode) {
 		case MODE.VIEW:
@@ -156,10 +163,8 @@ var DashboardController = (function () {
 			clearLayout();
 			buildConfiguration(responseText);
 			initConfiguration();
-			if (currentMode == null) {
-				setMode(MODE.VIEW);
-			}
-			console.log(">> " + dragStartCssClass);
+			reloadMode();
+			console.log(">> " + currentMode);
 		});
 	};
 	
