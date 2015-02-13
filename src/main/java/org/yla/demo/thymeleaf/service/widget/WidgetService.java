@@ -50,6 +50,14 @@ public class WidgetService extends BaseService {
 		widget.setFragmentName("textWidget");
 		widgets.add(widget);
 		
+		// Add Circle widget
+		widget = new Widget();
+		widget.setId("3");
+		widget.setName("Circle Widget");
+		widget.setType(types.get(3));
+		widget.setFragmentName("circleWidget");
+		widgets.add(widget);
+				
 		LOG.info("getAllWidgets : {} returned.", widgets.size());
 		return widgets;
 	}

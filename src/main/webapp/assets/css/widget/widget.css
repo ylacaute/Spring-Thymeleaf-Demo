@@ -1,0 +1,22 @@
+
+
+
+.widget-circle {
+	background-color: #55aaee;
+}
+.widget-circle .circle {
+	width: 70px;
+	height: 70px;
+	border-radius: 150px;
+	background-color: #AAaaee;
+}
+.widget-circle p {
+  height: 70px;
+  line-height: 70px;
+  text-align:center;
+}
+.widget-circle p span { 
+  vertical-align:middle;
+  display:inline-block;
+  line-height:normal;
+}

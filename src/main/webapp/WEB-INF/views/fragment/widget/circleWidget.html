@@ -4,8 +4,13 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body>
 	<div th:fragment="widget" th:remove="tag">
-		<div class="circle">
-			<p>CIRCLE</p>
+		<div class="widget-circle">
+			<div class="circle">
+				<p><span>CIRCLE</span></p>
+			</div>
+			<div class="content" style="margin-left: 50px; padding: 3px; background-color: #88E1E1">
+				DRAG FROM HERE ONLY (OR NOT)
+			</div>
 		</div>
 	</div>
 </body>

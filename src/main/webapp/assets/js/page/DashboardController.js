@@ -21,6 +21,7 @@ var DashboardController = (function () {
 			widgetWrapper : '<div class="widget-wrapper"></div>'
 	};
 	
+	var dragStartCssClass = "drag-start";
 	var widgetCounter = 0;
 	var currentMode;
 	var firstContainerClass = "sortable-first-container";
@@ -104,8 +105,9 @@ var DashboardController = (function () {
 	function createWidgetWrapper(widgetHtml, widgetUri) {
 		var $widgetWrapper = $(SORTABLE_DOM.widgetWrapper);
 		var $widgetWrapperCloseBtn = $(SORTABLE_DOM.closeBtn);
-		$widgetWrapper.append($widgetWrapperCloseBtn);
 		$widgetWrapper.append(widgetHtml);
+		$widgetWrapper.find(">:first-child").addClass(dragStartCssClass);
+		$widgetWrapper.prepend($widgetWrapperCloseBtn);
 		$widgetWrapper.data("widgetUri", widgetUri);
 		$widgetWrapperCloseBtn.click(function(event) {
 			$(this).parent().remove();
@@ -154,7 +156,10 @@ var DashboardController = (function () {
 			clearLayout();
 			buildConfiguration(responseText);
 			initConfiguration();
-			setMode(MODE.VIEW);
+			if (currentMode == null) {
+				setMode(MODE.VIEW);
+			}
+			console.log(">> " + dragStartCssClass);
 		});
 	};
 	
@@ -162,6 +167,9 @@ var DashboardController = (function () {
 		$(SORTABLE_DOM.sortable).sortable({
 			connectWith: ".sortable-container",
 			cursor: "move",
+			handle: "." + dragStartCssClass,
+			//revert: true, Nice to have animation but not beautiful if column width aren't the same
+			tolerance: "pointer",
 			update: onUpdate,
 			start: onDragStart,
 			stop: onDragStop
@@ -207,7 +215,11 @@ var DashboardController = (function () {
 	};
 	
 	function onUpdate(event, ui) {
-		
+		switch(currentMode) {
+		case MODE.FLY:
+			$(".sortable-section").removeClass("sortable-edit-mode");
+			break;
+		}
 	};
 	
 	return {

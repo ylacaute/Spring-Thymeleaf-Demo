@@ -25,6 +25,7 @@
 		<css>/assets/css/layout/page/default.css</css>
 		<css>/assets/css/theme/default.css</css>
 		<css>/assets/css/component/sortable.css</css>
+		<css>/assets/css/widget/widget.css</css>
 	</group>
 
 </groups>
