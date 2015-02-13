@@ -232,7 +232,7 @@ var DashboardController = (function () {
 
 			$("#config1Btn").click(function() { loadConfiguration(10); });
 			$("#config2Btn").click(function() { loadConfiguration(11); });
-			$("#config3Btn").click(function() { loadConfiguration(12); });
+			$("#userConfigBtn").click(function() { loadConfiguration(-1); });
 			
 			$("button").click(function() { $(this).blur(); });
 			
