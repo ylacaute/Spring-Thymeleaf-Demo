@@ -83,9 +83,9 @@ var DashboardController = (function () {
 					line.containers.push(container);
 					for (var w = 0; w < $widgetWrappers.length; w++) {
 						var $widgetWrapper = $widgetWrappers.eq(w);
-						console.log(" Widget : " + $widgetWrapper.data("widgetUri"));
+						console.log(" Widget : " + $widgetWrapper.data("fragmentUrl"));
 						var widget = new Object();
-						widget.fragmentUrl = $widgetWrapper.data("widgetUri");
+						widget.fragmentUrl = $widgetWrapper.data("fragmentUrl");
 						container.widgets.push(widget);
 					}
 				}
@@ -94,8 +94,10 @@ var DashboardController = (function () {
 		return config;
 	};
 	
-	function loadWidget(widgetUri, $container) {
-		var url = Constants.CONTEXT_PATH + widgetUri;
+	function loadWidget($widget, $container) {
+		var fragmentUrl = $widget.fragmentUrl;
+		var handleDragStart = $widget.handleDragStart;
+		var url = Constants.CONTEXT_PATH + fragmentUrl;
 		var loaderImgSrc = Constants.CONTEXT_PATH + "/assets/img/loader/ajax-loader-small.gif";
 		$container.append('<div class="loader"><img src="' + loaderImgSrc + '" alt="loading"></img><p>Please wait...</p></div>');
 		$.ajax({
@@ -103,21 +105,26 @@ var DashboardController = (function () {
 			url: url,
 		    success: function(responseText, textStatus, xhr) {
 		    	$container.find(">:first-child").remove();
-		    	$container.append(createWidgetWrapper(responseText, widgetUri));
+		    	$container.append(createWidgetWrapper(responseText, fragmentUrl, handleDragStart));
 		    },
 		    fail: function() {
-		    	console.log("WARN : the widget '" + widgetUri + "' has not been loaded.");
+		    	console.log("WARN : the widget '" + fragmentUrl + "' has not been loaded.");
 		    }
 		});
 	};
 	
-	function createWidgetWrapper(widgetHtml, widgetUri) {
+	function createWidgetWrapper(widgetHtml, fragmentUrl, handleDragStart) {
 		var $widgetWrapper = $(SORTABLE_DOM.widgetWrapper);
 		var $widgetWrapperCloseBtn = $(SORTABLE_DOM.closeBtn);
 		$widgetWrapper.append(widgetHtml);
-		$widgetWrapper.find(">:first-child").addClass(dragStartCssClass);
+		if (handleDragStart) {
+			$widgetWrapper.data("handleDragStart", handleDragStart);
+		} else {
+			$widgetWrapper.find(">:first-child").addClass(dragStartCssClass);
+		}
 		$widgetWrapper.prepend($widgetWrapperCloseBtn);
-		$widgetWrapper.data("widgetUri", widgetUri);
+		$widgetWrapper.data("fragmentUrl", fragmentUrl);
+		
 		$widgetWrapperCloseBtn.click(function(event) {
 			$(this).parent().remove();
 		});
@@ -138,7 +145,7 @@ var DashboardController = (function () {
 			var widgets = containers[i].widgets;
 			if (widgets != null) {
 				for (var j = 0; j < widgets.length; j++) {
-					loadWidget(widgets[j].fragmentUrl, $container);
+					loadWidget(widgets[j], $container);
 				}
 			}
 			$line.append($containerWrapper);
@@ -258,8 +265,8 @@ var DashboardController = (function () {
 			loadConfiguration(-1);
 		},
 		
-		addWidget : function(widgetUri) {
-			loadWidget(widgetUri, $("." + firstContainerClass));
+		addWidget : function(fragmentUrl) {
+			loadWidget(fragmentUrl, $("." + firstContainerClass));
 		},
 		
 		logTree : function() {

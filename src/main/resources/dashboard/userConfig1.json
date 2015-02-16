@@ -18,11 +18,11 @@
                     "cssClass": "col-sm-6",
                     "widgets" : [
                     	{
-                    		"fragmentUrl" : "/widget/1",
+                    		"fragmentUrl" : "/widget/2",
                     		"handleDragStart" : "true"
                     	},
                     	{
-                    		"fragmentUrl" : "/widget/2"
+                    		"fragmentUrl" : "/widget/1"
                     	}
                     ]
                 },
