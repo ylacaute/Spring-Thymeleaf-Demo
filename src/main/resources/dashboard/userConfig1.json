@@ -18,7 +18,8 @@
                     "cssClass": "col-sm-6",
                     "widgets" : [
                     	{
-                    		"fragmentUrl" : "/widget/1"
+                    		"fragmentUrl" : "/widget/1",
+                    		"handleDragStart" : "true"
                     	},
                     	{
                     		"fragmentUrl" : "/widget/2"

@@ -22,7 +22,6 @@ var DashboardController = (function () {
 	};
 	
 	var dragStartCssClass = "drag-start";
-	var widgetCounter = 0;
 	var currentMode;
 	var firstContainerClass = "sortable-first-container";
 	
@@ -97,10 +96,13 @@ var DashboardController = (function () {
 	
 	function loadWidget(widgetUri, $container) {
 		var url = Constants.CONTEXT_PATH + widgetUri;
+		var loaderImgSrc = Constants.CONTEXT_PATH + "/assets/img/loader/ajax-loader-small.gif";
+		$container.append('<div class="loader"><img src="' + loaderImgSrc + '" alt="loading"></img><p>Please wait...</p></div>');
 		$.ajax({
 			type: "GET",
 			url: url,
 		    success: function(responseText, textStatus, xhr) {
+		    	$container.find(">:first-child").remove();
 		    	$container.append(createWidgetWrapper(responseText, widgetUri));
 		    },
 		    fail: function() {

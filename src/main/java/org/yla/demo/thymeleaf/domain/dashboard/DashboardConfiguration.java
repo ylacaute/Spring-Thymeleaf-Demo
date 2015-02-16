@@ -70,6 +70,7 @@ class DashboardWidget {
 	
 	private String fragmentUrl;
 	private String fragmentConfigurerUrl;
+	private boolean handleDragStart = false;
 
 	public String getFragmentUrl() {
 		return fragmentUrl;
@@ -86,7 +87,14 @@ class DashboardWidget {
 	public void setFragmentConfigurerUrl(String fragmentConfigurerUrl) {
 		this.fragmentConfigurerUrl = fragmentConfigurerUrl;
 	}
-	
+
+	public boolean isHandleDragStart() {
+		return handleDragStart;
+	}
+
+	public void setHandleDragStart(boolean handleDragStart) {
+		this.handleDragStart = handleDragStart;
+	}
 	
 }
 

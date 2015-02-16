@@ -51,6 +51,15 @@ public class WidgetController extends BaseController {
 		Widget widget = widgetService.getWidget(widgetId);
 		model.addAttribute("widget", widget);
 		
+		LOG.debug("Simulate long loading...");
+		if (widgetId.equals("1")) {
+			Thread.sleep(2000);
+		} else if (widgetId.equals("2")) {
+			Thread.sleep(1000);
+		} else {
+			Thread.sleep(300);
+		}
+		
 		return RequestMappingConstants.WIDGET_FRAG_DIR + widget.getFragmentName();
 	}
 	
