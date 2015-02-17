@@ -94,9 +94,7 @@ var DashboardController = (function () {
 		return config;
 	};
 	
-	function loadWidget($widget, $container) {
-		var fragmentUrl = $widget.fragmentUrl;
-		var handleDragStart = $widget.handleDragStart;
+	function loadWidget($container, fragmentUrl, handleDragStart) {
 		var url = Constants.CONTEXT_PATH + fragmentUrl;
 		var loaderImgSrc = Constants.CONTEXT_PATH + "/assets/img/loader/ajax-loader-small.gif";
 		$container.append('<div class="loader"><img src="' + loaderImgSrc + '" alt="loading"></img><p>Please wait...</p></div>');
@@ -142,10 +140,10 @@ var DashboardController = (function () {
 			$containerWrapper.append($container);
 			$containerWrapper.addClass(containers[i].cssClass);
 			$containerWrapper.data("cssClass", containers[i].cssClass);
-			var widgets = containers[i].widgets;
-			if (widgets != null) {
-				for (var j = 0; j < widgets.length; j++) {
-					loadWidget(widgets[j], $container);
+			var $widgets = containers[i].widgets;
+			if ($widgets != null) {
+				for (var j = 0; j < $widgets.length; j++) {
+					loadWidget($container, $widgets[j].fragmentUrl, $widgets[j].handleDragStart);
 				}
 			}
 			$line.append($containerWrapper);
@@ -266,7 +264,7 @@ var DashboardController = (function () {
 		},
 		
 		addWidget : function(fragmentUrl) {
-			loadWidget(fragmentUrl, $("." + firstContainerClass));
+			loadWidget($("." + firstContainerClass), fragmentUrl, false);
 		},
 		
 		logTree : function() {
