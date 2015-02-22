@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Form Validation', pageSubTitle='Ajax Form Validation',
+	onLoad='FormController.onLoad();', 
+	onReady='FormController.onReady();'">
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>The form below is a Thymeleaf fragment. The submit is done in Javascript (AJAX), the HTML5 validation is fired manually
+				and the result is directly displayed without reloading the page : only the form fragment is reloaded. To have a such process,
+				we initialize the form model with ajax submit option in this page controller.</p>
+				<p><strong>Note :</strong> the <strong>Post-Redirect-Get</strong> pattern is still viable : the browser first do a POST, get the answer and if the form
+				is valid, load the page (in JS) defined with the successRedirect form field.</p>
+				<div th:include="/feature/demo/form/contact-us">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

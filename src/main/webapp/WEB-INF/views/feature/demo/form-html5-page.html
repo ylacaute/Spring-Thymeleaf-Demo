@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Form Validation', pageSubTitle='HTML5 Form Validation'">
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>To have a better use experience, we can add HTML5 validation. The form below is the same as in the classic 
+				demo page, the only difference is that we had new HTML/JS/Thymeleaf stuffs in the fragment.</p>
+				<ul>
+					<li><strong>required :</strong> inputs which can't be empty</li>
+					<li><strong>pattern :</strong> inputs validated by a regular expression</li>
+					<li><strong>onChange :</strong> reset HTML5 validation</li>
+					<li><strong>th:onInvalid :</strong> call a validation JS method with I18N key message as arguments</li>
+				</ul>
+				<p><strong>Note :</strong> there are still some limitations, it is still not possible to check an input text field
+				on its min or max length in a native html5 validation way. To do so we must use a pattern (regexp) and forget the idea
+				to have two differents messages for size and pattern matching. Another way could be to hack the form validation. In this
+				example, we let the server check the lengths.</p>
+				<br/>
+				<div th:include="/feature/demo/form/contact-us">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

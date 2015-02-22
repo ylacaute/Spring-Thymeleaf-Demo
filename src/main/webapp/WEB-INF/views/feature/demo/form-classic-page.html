@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Form Validation', pageSubTitle='Post-Redirect-Get Form Validation'">
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>This page show how we should always submit forms : with the <strong>Post-Redirect-Get pattern</strong> and
+				with <strong>server validation</strong>. This is the common way to do. The form has been loaded with a new
+				ContactUsModel with redirect attributes : </p>
+				<ul>
+					<li><strong>successRedirect :</strong> define on which page we are redirected if the form is successfully submited.</li>
+					<li><strong>failRedirect :</strong> define on which page we are redirected otherwise.</li>
+				</ul>
+				<p>For this example, we are always redirected on this page, with errors or not. Some will say that it is not a good
+				idea to put redirect attribute inside FormModel : I disagree, for many reasons :</p>
+				<ul>
+					<li><strong>Consistency :</strong> Since we want complete validation with messages and use annotation validation, it is 
+					much more better to create a specific FormModel object and not use entity object (the validation could be contextual
+					and moreover, use entity as model often brings problems, especially in transactionnal context). So, since we
+					have a specific form model, why not fully exploit it ?</li>
+					<li><strong>Reusability :</strong> this allow us to have a specific and independant form controller, which is only
+					linked to the form fragment, not the page which use this fragment !</li>
+				</ul>
+				<br/>
+				<div th:include="/feature/demo/form/contact-us-without-html5-validation">
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

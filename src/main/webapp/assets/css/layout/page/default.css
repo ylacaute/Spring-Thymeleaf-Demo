@@ -8,4 +8,5 @@
 /* ALL > add space between page title and page content */
 #page-content {
 	margin-top: 20px;
+	margin-bottom: 15px;
 }

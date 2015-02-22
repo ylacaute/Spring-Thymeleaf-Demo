@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<section th:fragment="contact-us">
+		<form id="contact-us-form" class="form-horizontal" method="post" th:action="@{/form/contactUs}" th:object="${contactUsModel}">
+			<input type="hidden" th:field="${contactUsModel.failRedirect}"></input>
+			<input type="hidden" th:field="${contactUsModel.successRedirect}"></input>
+			
+			<fieldset>
+				<legend>Contact us</legend>
+				<ul class="alert alert-danger" th:if="${#fields.hasErrors('global')}">
+					<li th:each="e : ${#fields.detailedErrors()}" style="margin-left: 10px" th:if="${e.global}">
+				        <span th:text="${e.message}">The error message</span>
+				    </li>
+				</ul>
+				<div th:class="'form-group ' + ${#fields.hasErrors('name') ? 'has-error' : ''}">
+					<label class="col-sm-2 control-label" for="model">Name</label>
+					<div class="col-sm-10">
+						<input class="form-control input-xxlarge" id="name" placeholder="Name"
+							th:field="${contactUsModel.name}"></input>
+					</div>
+					<label th:if="${#fields.hasErrors('name')}" class="col-sm-offset-2 col-sm-10 help-block" th:errors="*{name}">
+						[FIELD ERROR]
+					</label>
+				</div>
+				<div th:class="'form-group ' + ${#fields.hasErrors('email') ? 'has-error' : ''}">
+					<label class="col-sm-2 control-label" for="email">E-Mail</label>
+					<div class="col-sm-10">
+						<input class="form-control input-xxlarge" placeholder="E-Mail"
+							th:field="*{email}"></input>
+					</div>
+					<label th:if="${#fields.hasErrors('email')}" class="col-sm-offset-2 col-sm-10 help-block" th:errors="*{email}">
+						[FIELD ERROR]
+					</label>
+				</div>
+				<div th:class="'form-group ' + ${#fields.hasErrors('subject') ? 'has-error' : ''}">
+					<label class="col-sm-2 control-label" for="subject">Subject</label>
+					<div class="col-sm-10">
+						<input class="form-control input-xxlarge" id="subject" placeholder="Subject" 
+							th:field="*{subject}"></input>
+					</div>
+					<label th:if="${#fields.hasErrors('subject')}" class="col-sm-offset-2 col-sm-10 help-block" th:errors="*{subject}">
+						[FIELD ERROR]
+					</label>
+				</div>
+				
+				<div th:class="'form-group ' + ${#fields.hasErrors('message') ? 'has-error' : ''}">
+					<label class="col-sm-2 control-label" for="message">Message</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" id="message" name="message" placeholder="Message details" rows="5" 
+							th:field="*{message}"></textarea>
+					</div>
+					<label th:if="${#fields.hasErrors('message')}" class="col-sm-offset-2 col-sm-10 help-block" th:errors="*{message}">
+						[FIELD ERROR]
+					</label>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<th:block th:if="${ajaxSubmit == null}">
+							<button type="submit" class="btn btn-default">Send message</button>
+						</th:block>
+						<th:block th:if="${ajaxSubmit != null and ajaxSubmit == true}">
+							<button type="submit" class="btn btn-default"
+								th:onClick="'javascript:FormController.submit(event, \'' + @{/form/contactUs} + '\')'">Send message</button>
+						</th:block>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+</body>
+</html>

@@ -19,11 +19,11 @@ var LayoutController = (function () {
 		// PUBLIC ---------------------------------------------------------------------------------
 		
 		onLoad : function() {
-	    	console.log("Demos Layout page fully loaded.");
+	    	console.log("demo Layout page fully loaded.");
 		},
 		
 		onReady : function() {
-	    	console.log("Demos Layout page ready.");
+	    	console.log("demo Layout page ready.");
 		},
 		
 		loadWidget : function(domReceiverId, widgetId) {

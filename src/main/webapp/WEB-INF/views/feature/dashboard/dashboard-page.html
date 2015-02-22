@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Dashboard', pageSubTitle='JQuery UI Sortable Demo', 
+	onLoad='DashboardController.onLoad();', 
+	onReady='DashboardController.onReady();'">
+<head>
+</head>
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Let's play with this beautiful dashboard ! </p>
+				<ul>
+					<li>Mode management : View, Edit and Fly</li>
+					<li>Non intrusive : no constraint on widget (type, id, class...)</li>
+					<li>Mobile compliant (use bootstrap for layout configuration)</li>
+					<li>Dynamic load of any Thymeleaf fragment, let's call them widgets</li>
+					<li>Dynamic configuration management : a simple JSON file retrieved in AJAX</li>
+					<li>Display a loader for each fragment during the load (mocked by Thread.sleep)</li>
+				</ul>
+				<br/>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12" style="margin-bottom: 10px;">
+				<div class="btn-group" data-toggle="buttons">
+					<label id="viewModeBtn" class="btn btn-primary active">
+				    	<input type="radio" name="options" autocomplete="off"></input>View
+				  	</label>
+				  	<label id="editModeBtn" class="btn btn-primary">
+					    <input type="radio" name="options" autocomplete="off"></input>Edit
+				  	</label>
+				  	<label id="flyModeBtn" class="btn btn-primary">
+					    <input type="radio" name="options" autocomplete="off"></input>Fly
+				  	</label>
+				</div>
+				<button id="config1Btn" type="button" class="btn btn-info">Config 1</button>
+				<button id="config2Btn" type="button" class="btn btn-info">Config 2</button>
+<!-- 				<button id="imgConfigBtn" type="button" class="btn btn-info">Image Collection Config</button> -->
+				<button id="userConfigBtn" type="button" class="btn btn-success">Your configuration</button>
+			</div>
+		</div>
+	  	<div class="row">
+			<div class="col-sm-12 sortable-toolbar">
+				<button id="clearBtn" class="btn btn-default">Clear</button>
+				<button id="saveBtn" class="btn btn-default">Save</button>
+				<button class="btn btn-default"
+					th:onClick="'javascript:DashboardController.addWidget(\'/widget/1\')'">Add HelloWorld widget</button>
+				<button class="btn btn-default"
+					th:onClick="'javascript:DashboardController.addWidget(\'/widget/2\')'">Add Text widget</button>
+				<button class="btn btn-default"
+					onClick="DashboardController.logTree();">Print Tree</button>
+				<div style="float: right;">
+					<div class="btn-group" data-toggle="buttons" style="float: right;">
+					  <label id="layout1Btn" class="btn btn-primary active">
+					    <input type="radio" name="options" autocomplete="off" checked="checked"></input>Layout 1
+					  </label>
+					  <label id="layout2Btn" class="btn btn-primary">
+					    <input type="radio" name="options" autocomplete="off"></input>Layout 2
+					  </label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sortable-section">
+	  	</div>
+	</div>
+	
+</body>
+</html>

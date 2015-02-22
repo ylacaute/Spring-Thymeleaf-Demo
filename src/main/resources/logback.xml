@@ -16,6 +16,7 @@
 	<root level="WARN">
 		<appender-ref ref="STDOUT" />
 	</root>
-	<logger name="org.yla" level="INFO" />
+	<logger name="org.yla" level="DEBUG" />
+	<logger name="org.yla.demo.thymeleaf.core.interceptor" level="INFO" />
 
 </configuration>

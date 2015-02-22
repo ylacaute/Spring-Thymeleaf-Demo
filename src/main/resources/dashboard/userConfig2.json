@@ -44,7 +44,10 @@
                     "cssClass": "col-sm-3",
                     "widgets" : [
                     	{
-                    		"fragmentUrl" : "/widget/1"
+                    		"fragmentUrl" : "/widget/4",
+                    		"params" : {
+                    			"imageSrc" : "/assets/img/picture/connected-objects/pic01.jpg" 
+                    		}
                     	},
                     	{
                     		"fragmentUrl" : "/widget/2",

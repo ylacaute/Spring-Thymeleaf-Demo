@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Form Validation', pageSubTitle='Managing Form With Layout'">
+<body>
+
+	<div layout:fragment="page-content">
+		<div class="row">
+			<div class="col-sm-12">
+				<h4>Form with layout</h4>
+				<p>This is unfotunately not possible due to a Teamleaf limitation. The th:object force us to use the real
+				   model bean name (see form.html in layout).</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

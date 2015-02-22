@@ -14,6 +14,7 @@ var DashboardController = (function () {
 	};
 	var SORTABLE_DOM = {
 			sortable : "div.droptrue",
+			loader : '<div class="loader"><img alt="loading"></img><p>Please wait...</p></div>',
 			line : '<div class="row sortable-row"></div>',
 			containerWrapper : '<div class="sortable-container-wrapper"></div>',
 			container : '<div class="droptrue sortable-container"></div>',
@@ -94,15 +95,18 @@ var DashboardController = (function () {
 		return config;
 	};
 	
-	function loadWidget($container, fragmentUrl, handleDragStart) {
+	function loadWidget($container, fragmentUrl, params, handleDragStart) {
 		var url = Constants.CONTEXT_PATH + fragmentUrl;
 		var loaderImgSrc = Constants.CONTEXT_PATH + "/assets/img/loader/ajax-loader-small.gif";
-		$container.append('<div class="loader"><img src="' + loaderImgSrc + '" alt="loading"></img><p>Please wait...</p></div>');
+		var $loader = $(SORTABLE_DOM.loader);
+		$loader.find("img").attr("src", loaderImgSrc);
+		$container.append($loader);
 		$.ajax({
 			type: "GET",
 			url: url,
+			data: params,
 		    success: function(responseText, textStatus, xhr) {
-		    	$container.find(">:first-child").remove();
+		    	$container.find(".loader").remove();
 		    	$container.append(createWidgetWrapper(responseText, fragmentUrl, handleDragStart));
 		    },
 		    fail: function() {
@@ -143,7 +147,7 @@ var DashboardController = (function () {
 			var $widgets = containers[i].widgets;
 			if ($widgets != null) {
 				for (var j = 0; j < $widgets.length; j++) {
-					loadWidget($container, $widgets[j].fragmentUrl, $widgets[j].handleDragStart);
+					loadWidget($container, $widgets[j].fragmentUrl, $widgets[j].params, $widgets[j].handleDragStart);
 				}
 			}
 			$line.append($containerWrapper);
@@ -257,14 +261,16 @@ var DashboardController = (function () {
 			$("#config1Btn").click(function() { loadConfiguration(10); });
 			$("#config2Btn").click(function() { loadConfiguration(11); });
 			$("#userConfigBtn").click(function() { loadConfiguration(-1); });
+			$("#imgConfigBtn").click(function() { loadConfiguration(42); });
+			
 			
 			$("button").click(function() { $(this).blur(); });
 			
 			loadConfiguration(-1);
 		},
 		
-		addWidget : function(fragmentUrl) {
-			loadWidget($("." + firstContainerClass), fragmentUrl, false);
+		addWidget : function(fragmentUrl, params) {
+			loadWidget($("." + firstContainerClass), fragmentUrl, params, false);
 		},
 		
 		logTree : function() {

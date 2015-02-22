@@ -1,0 +1,43 @@
+{
+    "lines": [
+        {
+            "containers": [
+                {
+                    "cssClass": "col-sm-4",
+                    "widgets" : [
+                    	{
+                    		"fragmentUrl" : "/widget/4",
+                    		"params" : {
+                    			"imageSrc" : "/assets/img/picture/connected-objects/pic01.jpg" 
+                    		}
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-4",
+                    "widgets" : [
+                    	{
+                    		"fragmentUrl" : "/widget/4",
+                    		"params" : {
+                    			"collection" : "myCollection",
+                    			"imageSrc" : "/assets/img/picture/connected-objects/pic01.jpg" 
+                    		}
+                    	}
+                    ]
+                },
+                {
+                    "cssClass": "col-sm-4",
+                    "widgets" : [
+                    	{
+                    		"fragmentUrl" : "/widget/4",
+                    		"params" : {
+                    			"collection" : "myCollection",
+                    			"imageSrc" : "/assets/img/picture/connected-objects/pic01.jpg" 
+                    		}
+                    	}
+                    ]
+                }                
+            ]
+        }
+    ]
+}

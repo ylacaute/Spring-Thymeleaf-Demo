@@ -2,35 +2,43 @@ package org.yla.lib.skeleton.mvc;
 
 public abstract class FormModelSupport implements FormModel {
 
-	private String forward;
+	private String successRedirect;
+	private String failRedirect;
+	private boolean ajaxSubmit = false;
 	
-	private String redirect;
+	public boolean isAjaxSubmit() {
+		return ajaxSubmit;
+	}
 
-	@Override
-	public String getForward() {
-		return forward;
+	public void setAjaxSubmit(boolean ajaxSubmit) {
+		this.ajaxSubmit = ajaxSubmit;
 	}
 
 	@Override
-	public void setForward(String forward) {
-		this.forward = forward;
+	public String getSuccessRedirect() {
+		return successRedirect;
 	}
 
 	@Override
-	public String getRedirect() {
-		return redirect;
-	}
-
-	@Override
-	public void setRedirect(String redirect) {
-		this.redirect = redirect;
+	public void setSuccessRedirect(String successRedirect) {
+		this.successRedirect = successRedirect;
 	}
 	
+	@Override
+	public String getFailRedirect() {
+		return failRedirect;
+	}
+
+	@Override
+	public void setFailRedirect(String failRedirect) {
+		this.failRedirect = failRedirect;
+	}
+
 	@Override
 	public String toString() {
 		return new StringBuilder()
-			.append(", forward:").append(forward)
-			.append(", redirect:").append(redirect)
+			.append(", successRedirect:").append(successRedirect)
+			.append(", failRedirect:").append(failRedirect)
 			.toString();
 	}
 }

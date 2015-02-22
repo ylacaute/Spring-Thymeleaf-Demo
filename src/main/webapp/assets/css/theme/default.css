@@ -27,15 +27,23 @@ footer {
 	color: #5588aa;
 	font-weight: bold;
     margin-top: -5px;
+    font-size: 18px;
 }
 .page-sub-title:after {
-    content: "}";
+    /*content: "}";*/
 }
 .page-sub-title:before {
-    content: "{";
+    /*content: "{";*/
 }
 /* !PAGE SUBTITLE */
 
 .circle {
 	radius: 50;	
 }
+
+/* Bootstrap extension */
+/* Change size of message helper (usually in a form) */
+.help-block {
+    font-weight: 100;
+}
+/* !Bootstrap extension */

@@ -14,7 +14,7 @@ public abstract class BasePageController extends BaseController {
 	 * All PageController defined a page identifier (or name). This allow to do dynamic stuff
 	 * in an easy way inside thymeleaf views. 
 	 * 
-	 * (Not currently used)
+	 * Currently used for the header fragment (to active the current page)
 	 *  
 	 * @return
 	 */

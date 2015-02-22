@@ -2,10 +2,12 @@ package org.yla.lib.skeleton.mvc;
 
 public interface FormModel {
 
-	String getForward();
-	void setForward(String forward);
+	String getModelName();
 	
-	String getRedirect();
-	void setRedirect(String redirect);
+	String getSuccessRedirect();
+	void setSuccessRedirect(String successRedirect);
+	
+	String getFailRedirect();
+	void setFailRedirect(String failRedirect);
 	
 }

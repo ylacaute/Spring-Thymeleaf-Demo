@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body>
+	<div th:fragment="widget" layout:include="/core/layout/component/widget :: widget" th:remove="tag">
+		<div layout:fragment="widget-head" th:remove="tag">
+			<div class="panel-heading drag-start" th:text="'Text Widget'">
+			</div>
+		</div>
+		<div layout:fragment="widget-body">
+			<p>Text Widget content</p>
+			<p>Widget id : <span th:text="${widget.id}"></span></p>
+			<p>This widget is loaded in ajax with a thymeleaf fragment.</p>
+			<p>In the Dashboard, this widget can <strong>only be dragged by the head</strong>.</p>
+		</div>
+	</div>
+</body>
+</html>

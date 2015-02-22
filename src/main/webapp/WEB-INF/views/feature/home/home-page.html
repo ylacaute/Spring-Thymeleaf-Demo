@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Home Page', pageSubTitle='Advanced Thymeleaf Demo', 
+	onLoad='HomeController.onLoad();', 
+	onReady='HomeController.onReady();'">
+<body>
+
+	<div layout:fragment="page-content">
+	  	<div class="row">
+			<div class="col-sm-12" layout:include="/core/layout/component/panel :: panel" th:with="panelTitle='Welcome Panel :)'">
+		   		<div layout:fragment="panel-body">
+		   			<p>Take a tour. Be aware that cache is fully disabled for development purpose 
+		   				so each request take a little longer than usual.
+		   			</p>
+		   		</div>
+		  	</div>
+	  	</div>
+	</div>
+	
+</body>
+</html>

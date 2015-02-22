@@ -23,6 +23,7 @@
 
 .sortable-container > div {
 	margin-bottom: 5px;
+	text-align: center;
 }
 .sortable-section .row {
 	margin-top: 20px;
@@ -36,3 +37,7 @@
     text-align: center;
 }
 
+.widget-wrapper img {
+	max-height: 100%;
+    max-width: 100%;
+}

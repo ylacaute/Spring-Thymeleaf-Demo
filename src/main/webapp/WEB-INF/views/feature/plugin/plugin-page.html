@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Plugin Page'">
+<body>
+
+	<div layout:fragment="page-content">
+		
+		<div class="row">
+			<div class="col-sm-12 sortable-toolbar">
+				<p>Hello, this is the plugin page content !</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 sortable-toolbar">
+				<button id="testBtn" class="btn btn-default">Clear</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

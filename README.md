@@ -7,7 +7,7 @@ In progress : build a powerful dashboard like iGoole (JQuery sortable) with Thym
 ## Install
 * Download the zipfile from the [this page](https://github.com/ylacaute/SpringThymeleafDemo) 
 * Import the project as maven project
-   
+* Install MongoDB (http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/)
 ## Overview
 
 ### Spring architecture

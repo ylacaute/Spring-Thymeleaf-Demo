@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html 
+	xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:dt="http://github.com/dandelion/datatables"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+ <head>
+   	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" th:href="@{/wro/common.css}" />
+	<script type="text/javascript" th:src="@{/wro/common.js}"></script>
+	<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Thymeleaf</title>
+</head>
+<body th:onLoad="${onLoad}">
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+	 		$(document).ready(function() {
+	 			Constants.CONTEXT_PATH = /*[[${#ctx.httpServletRequest.contextPath}]]*/;
+	 			var pageReadyCallback = /*[[${onReady}]]*/;
+	 			console.log("contextPath set to " + Constants.CONTEXT_PATH);
+	 			FunctionUtils.callFromString(pageReadyCallback);
+			});
+		/*]]>*/ 
+	</script>
+	<!-- We need to include header and main in the same DIV in case we want a footer fixed on bot -->
+	<div id="main-wrapper">
+		<div id="main">
+			<header th:replace="/core/header/header :: header">
+				[HEADER]
+			</header>
+			<section layout:fragment="main-content">
+				[CONTENT]
+		   	</section>
+	   	</div>
+   	</div>
+	<footer th:replace="/core/footer/footer :: footer">
+		[FOOTER]
+	</footer>
+  </body>
+</html>

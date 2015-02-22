@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="/core/layout/page/page-a4"
+	th:with="pageTitle='Login Page'">
+<body>
+
+	<div layout:fragment="page-content">
+	  	<div class="row">
+			<div class="col-sm-12" layout:include="/core/layout/component/panel :: panel" th:with="panelTitle='Login Panel'">
+		   		<div layout:fragment="panel-body">
+		   			<div th:replace="/feature/login/form/login :: login"></div>
+		   		</div>
+		  	</div>
+	  	</div>
+	</div>
+	
+</body>
+</html>
