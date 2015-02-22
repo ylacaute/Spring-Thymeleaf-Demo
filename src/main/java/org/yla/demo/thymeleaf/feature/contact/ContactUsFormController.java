@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.yla.demo.thymeleaf.core.mvc.RequestMappingConstants;
 import org.yla.demo.thymeleaf.feature.login.LoginModel;
 import org.yla.lib.skeleton.mvc.BaseFormController;
-import org.yla.lib.skeleton.mvc.MessageHelper;
 
 @Controller
 public class ContactUsFormController extends BaseFormController implements Validator {

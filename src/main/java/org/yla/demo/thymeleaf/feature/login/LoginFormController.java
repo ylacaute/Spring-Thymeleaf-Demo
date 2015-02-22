@@ -7,9 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +46,7 @@ public class LoginFormController extends BaseFormController {
 		if (binding.hasErrors()) {
 			return fail(loginModel, binding, attr);
 		} 
-		if (true) { // test connexion here
+		if (true) { // test connexion here...
 			binding.reject("login-form.login.failed", UNDEFINED_KEY);
 			return fail(loginModel, binding, attr);
 		}

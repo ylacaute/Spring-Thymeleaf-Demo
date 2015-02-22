@@ -15,26 +15,17 @@
  */
 package org.yla.demo.thymeleaf.core.config.db;
 
-import javax.sql.DataSource;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
 
-/**
- * Spring JavaConfig configuration class to setup a Spring container and infrastructure components like a
- * {@link DataSource}, a {@link EntityManagerFactory} and a {@link PlatformTransactionManager}.
- * 
- * @author Oliver Gierke
- */
 @Configuration
 @EnableMongoRepositories("org.yla.demo.thymeleaf.feature")
 class MongoDBConfig extends AbstractMongoConfiguration {
@@ -61,77 +52,4 @@ class MongoDBConfig extends AbstractMongoConfiguration {
 		return mongo;
 	}
 
-	
-	
-	
-	//@Autowired
-	//private List<Converter<?, ?>> converters;
-
-	/* 
-	 * (non-Javadoc)
-	 * @see org.springframework.data.mongodb.config.AbstractMongoConfiguration#customConversions()
-	 */
-	/*
-	@Override
-	public CustomConversions customConversions() {
-		return new CustomConversions(converters);
-	}
-	 */
-
-	/*
-	@Override
-	protected String getMappingBasePackage() {
-		return "org.yla.demo.thymeleaf.feature";
-	}
-	*/
-
-
-
-
-
-
-	/*
-	 * public MongoTemplate mongo() {
-    if (null != m_) return m_;
-    MongoCredential mc = null;
-    if (!S.empty(password)) {
-        mc = MongoCredential.createMongoCRCredential(username, db, password.toCharArray());
-    }
-    try {
-        ServerAddress svr = new ServerAddress(host, port);
-        List<MongoCredential> credentials = null == mc ? null : C.list(mc);
-        MongoClient client = new MongoClient(svr, credentials);
-        m_ = new MongoTemplate(client, db);
-        Converter[] ca = new Converter[]{new ObCriteria.TypeWriteConverter(), new ObCriteria.TypeReadConverter()};
-        CustomConversions cc = new CustomConversions(Arrays.asList(ca));
-        MappingMongoConverter mmc = (MappingMongoConverter)m_.getConverter();
-        mmc.setCustomConversions(cc);
-        mmc.afterPropertiesSet();
-        new MongoTemplateHolder().setMongoTemplate(m_);
-    } catch (Exception e) {
-        throw E.invalidConfiguration(e, "Error creating mongo client");
-    }
-    return m_;
-}
-	 */
-
-
-
-
-
-
-	/*<!-- Activate Spring Data MongoDB repository support -->
-  	<mongo:repositories base-package="org.krams.repository" />
-
-  	<!-- MongoDB host -->
-	<mongo:mongo host="${mongo.host.name}" port="${mongo.host.port}"/>
-
-	<!-- Template for performing MongoDB operations -->
-  	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate" 
-  			c:mongo-ref="mongo" c:databaseName="${mongo.db.name}"/>
-
-	<!-- Service for initializing MongoDB with sample data using MongoTemplate -->
-	<bean id="initMongoService" class="org.krams.service.InitMongoService" init-method="init"/>	
-
-	 */
 }
